@@ -24,7 +24,7 @@ jobs:
         id: check_submodule
         run: |
           git submodule update --remote
-          if git diff --submodule|grep -q "bundle exec rake jpostcode:data:update_all"; then
+          if git diff --submodule|grep -q "update_jpostcode_data"; then
             echo 'has changes'
             echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
           else
