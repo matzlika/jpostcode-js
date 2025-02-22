@@ -23,15 +23,13 @@ jobs:
       - name: Check for submodule updates
         id: check_submodule
         run: |
-          echo $(git submodule status)
-          git submodule update --remote --recursive
-          if [ -n "$(git diff --submodule)" ]; then
-            echo "detected changes"
+          if git diff --submodule|grep -q "bundle exec rake jpostcode:data:update_all"; then
+            echo 'has changes'
             echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
           else
-            echo "no changes"
-            echo "SUBMODULE_CHANGED=false" >> $GITHUB_ENV
+            echo 'no valid changes'
           fi
+
 
       - name: Configure Git
         if: env.SUBMODULE_CHANGED == 'true'
