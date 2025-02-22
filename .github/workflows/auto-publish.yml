@@ -24,7 +24,7 @@ jobs:
         id: check_submodule
         run: |
           git submodule update --remote
-          if git diff --submodule|grep -q "bundle exec rake jpostcode:data:update_all"; then
+          if git diff --submodule|grep -q "update_jpostcode_data"; then
             echo 'has changes'
             echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
           else
@@ -42,7 +42,7 @@ jobs:
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
           MAJOR_MINOR=$(jq -r '.version' package.json | awk -F. '{print $1"."$2}')
-          TIMESTAMP=$(date +'%Y%m%d%H%M%S')
+          TIMESTAMP=$(date +'%Y%m%d')
           NEW_VERSION="$MAJOR_MINOR.$TIMESTAMP"
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           jq --arg v "$NEW_VERSION" '.version = $v' package.json > temp.json && mv temp.json package.json
@@ -67,6 +67,8 @@ jobs:
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
           npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          npm install
+          npm run build
           npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
