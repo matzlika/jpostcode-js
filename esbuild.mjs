@@ -1,4 +1,7 @@
 import * as esbuild from 'esbuild'
+import * as fs from "node:fs";
+
+fs.cpSync('jpostcode-data/data/json', 'dist/jpostcode-data/data/json', {recursive: true});
 
 await esbuild.build({
   entryPoints: ["src/jpostcode.ts"],

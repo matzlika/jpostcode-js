@@ -49,7 +49,7 @@ class Address {
 }
 
 class Jpostcode {
-  private static DATA_DIR = path.join(__dirname, '../jpostcode-data/data/json');
+  private static DATA_DIR = path.join(__dirname, '../dist/jpostcode-data/data/json');
 
   static find(postalCode: string): Address[] {
     const normalizedCode = postalCode.replace('-', '');
