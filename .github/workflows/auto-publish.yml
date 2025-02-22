@@ -23,6 +23,7 @@ jobs:
       - name: Check for submodule updates
         id: check_submodule
         run: |
+          echo $(git submodule status)
           git submodule update --remote --recursive
           if [ -n "$(git diff --submodule)" ]; then
             echo "detected changes"
