@@ -23,19 +23,15 @@ jobs:
       - name: Check for submodule updates
         id: check_submodule
         run: |
-          SUBMODULE_PATH="submodule-path"  # Replace with actual submodule path
-          PREV_HASH=$(git rev-parse HEAD:$SUBMODULE_PATH)
-          git submodule update --remote
-          NEW_HASH=$(git rev-parse HEAD:$SUBMODULE_PATH)
-          
-          if [[ "$PREV_HASH" != "$NEW_HASH" ]]; then
-            echo "Submodule updated from $PREV_HASH to $NEW_HASH"
+          git submodule update --remote --recursive
+          if [ -n "$(git diff --submodule)" ]; then
+            echo "detected changes"
             echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
           else
-            echo "No updates detected"
+            echo "no changes"
             echo "SUBMODULE_CHANGED=false" >> $GITHUB_ENV
           fi
-          
+
       - name: Configure Git
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
