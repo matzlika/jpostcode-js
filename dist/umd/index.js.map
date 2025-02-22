@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../../src/index.ts"],"sourcesContent":["export const hello = () => 'Hello World';"],"names":[],"mappings":"yPAAqB,WAAM,MAAA,aAAA"}
