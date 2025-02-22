@@ -14,17 +14,43 @@ npm install jpostcode
 
 Here's a basic example of how to use the library:
 
+### JavaScript
+
 ```javascript
 const { Jpostcode } = require('jpostcode');
 
 // Find an address by postal code
-const address = Jpostcode.find('0010000');
+const addresses = Jpostcode.find('0010000');
 
-if (address) {
-  console.log(`Prefecture: ${address.prefecture} (${address.prefecture_kana})`);
-  console.log(`City: ${address.city} (${address.city_kana})`);
-  console.log(`Town: ${address.town} (${address.town_kana})`);
-  console.log(`Zip Code: ${address.zip_code}`);
+if (addresses.length > 0) {
+  // multiple addresses could be found from a postal code.
+  for (const address of addresses) {
+    console.log(`Prefecture: ${address.prefecture} (${address.prefectureKana})`);
+    console.log(`City: ${address.city} (${address.cityKana})`);
+    console.log(`Town: ${address.town} (${address.townKana})`);
+    console.log(`Zip Code: ${address.zipCode}`);
+  }
+} else {
+  console.log('Address not found.');
+}
+```
+
+### TypeScript
+
+```typescript
+import { Address, Jpostcode } from 'jpostcode';
+
+// Find an address by postal code
+const addresses:Address[] = Jpostcode.find('0010000');
+
+if (addresses.length > 0) {
+  // multiple addresses could be found from a postal code.
+  for (const address of addresses) {
+    console.log(`Prefecture: ${address.prefecture} (${address.prefectureKana})`);
+    console.log(`City: ${address.city} (${address.cityKana})`);
+    console.log(`Town: ${address.town} (${address.townKana})`);
+    console.log(`Zip Code: ${address.zipCode}`);
+  }
 } else {
   console.log('Address not found.');
 }

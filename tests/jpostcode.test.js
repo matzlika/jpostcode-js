@@ -8,13 +8,22 @@ describe('Jpostcode', () => {
     const address = addresses[0];
     expect(address).toBeInstanceOf(Address);
     expect(address.prefecture).toBe('北海道');
-    expect(address.prefecture_kana).toBe('ホッカイドウ');
-    expect(address.prefecture_code).toBe(1);
+    expect(address.prefectureKana).toBe('ホッカイドウ');
+    expect(address.prefectureCode).toBe(1);
     expect(address.city).toBe('札幌市北区');
-    expect(address.city_kana).toBe('サッポロシキタク');
+    expect(address.cityKana).toBe('サッポロシキタク');
     expect(address.town).toBe('');
-    expect(address.town_kana).toBe('');
-    expect(address.zip_code).toBe('0010000');
+    expect(address.townKana).toBe('');
+    expect(address.zipCode).toBe('0010000');
+  });
+
+  test('should support multiple addresse', () => {
+    const addresses = Jpostcode.find('0110951');
+    expect(addresses).toBeInstanceOf(Array);
+    expect(addresses.length).toBeGreaterThan(1);
+    addresses.forEach((address) => {
+      expect(address).toBeInstanceOf(Address);
+    });
   });
 
   test('should return an empty array for a non-existent postal code', () => {

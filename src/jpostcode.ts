@@ -19,11 +19,11 @@ class Address {
     return this.data.prefecture;
   }
 
-  get prefecture_kana() {
+  get prefectureKana() {
     return this.data.prefecture_kana;
   }
 
-  get prefecture_code() {
+  get prefectureCode() {
     return this.data.prefecture_code;
   }
 
@@ -31,7 +31,7 @@ class Address {
     return this.data.city;
   }
 
-  get city_kana() {
+  get cityKana() {
     return this.data.city_kana;
   }
 
@@ -39,11 +39,11 @@ class Address {
     return this.data.town;
   }
 
-  get town_kana() {
+  get townKana() {
     return this.data.town_kana;
   }
 
-  get zip_code() {
+  get zipCode() {
     return this.data.postcode;
   }
 }
@@ -53,22 +53,24 @@ class Jpostcode {
 
   static find(postalCode: string): Address[] {
     const normalizedCode = postalCode.replace('-', '');
-    const files = fs.readdirSync(this.DATA_DIR);
-
-    const addresses: Address[] = [];
-    
-    for (const file of files) {
-      const filePath = path.join(this.DATA_DIR, file);
-      const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-
-      for (const entry of Object.values(data) as AddressData[]) {
-        if (entry.postcode === normalizedCode) {
-          addresses.push(new Address(entry));
-        }
-      }
+    const upper = normalizedCode.substring(0, 3);
+    const lower = normalizedCode.substring(3);
+    const file = path.join(this.DATA_DIR, `${upper}.json`);
+    if (!fs.existsSync(file)) {
+      return [];
     }
 
-    return addresses;
+    const data = JSON.parse(fs.readFileSync(file).toString());
+    const entry = data[lower];
+    if (!entry) {
+      return [];
+    }
+    if (entry instanceof Array) {
+      const entries:AddressData[] = entry as AddressData[];
+      return entries.map((entry) => new Address(entry as AddressData));
+    } else {
+      return [new Address(entry as AddressData)];
+    }
   }
 }
 
