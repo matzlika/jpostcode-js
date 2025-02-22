@@ -1,4 +1,4 @@
-import { Jpostcode, Address } from './jpostcode';
+import { Jpostcode, Address } from '../src/jpostcode';
 
 describe('Jpostcode', () => {
   test('should find an address by postal code', () => {

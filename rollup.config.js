@@ -1,8 +1,9 @@
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
+import copy from 'rollup-plugin-copy';
 
 export default {
-  input: 'src/index.ts',
+  input: 'src/jpostcode.ts',
   output: [
     {
       file: 'dist/cjs/index.js',
@@ -23,6 +24,11 @@ export default {
     }
   ],
   plugins: [
-    typescript({ tsconfig: './tsconfig.json' })
+    typescript({ tsconfig: './tsconfig.json' }),
+    copy({
+      targets: [
+        { src: 'jpostcode-data/data/json/*', dest: 'dist/jpostcode-data/data/json' }
+      ]
+    })
   ]
 };
