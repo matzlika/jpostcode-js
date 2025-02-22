@@ -53,6 +53,7 @@ jobs:
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
           git add package.json
+          git add jpostcode-data
           git commit -m "Updated package.json version to $NEW_VERSION due to submodule update"
           git push origin main
 
