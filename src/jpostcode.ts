@@ -51,22 +51,24 @@ class Address {
 class Jpostcode {
   private static DATA_DIR = path.join(__dirname, '../jpostcode-data/data/json');
 
-  static find(postalCode: string): Address | null {
+  static find(postalCode: string): Address[] {
     const normalizedCode = postalCode.replace('-', '');
     const files = fs.readdirSync(this.DATA_DIR);
 
+    const addresses: Address[] = [];
+    
     for (const file of files) {
       const filePath = path.join(this.DATA_DIR, file);
       const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
       for (const entry of Object.values(data) as AddressData[]) {
         if (entry.postcode === normalizedCode) {
-          return new Address(entry);
+          addresses.push(new Address(entry));
         }
       }
     }
 
-    return null;
+    return addresses;
   }
 }
 
