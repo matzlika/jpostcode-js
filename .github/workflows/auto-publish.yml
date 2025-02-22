@@ -60,7 +60,7 @@ jobs:
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
           TAG_NAME=$NEW_VERSION
-          git tag -a "$TAG_NAME"
+          git tag -a "$TAG_NAME" -m "Submodule updated on $(date +'%Y-%m-%d %H:%M:%S')"
           git push origin "$TAG_NAME"
 
       - name: Publish to npm
