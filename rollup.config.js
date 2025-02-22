@@ -8,12 +8,12 @@ export default {
     {
       file: 'dist/cjs/index.js',
       format: 'cjs',
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: 'dist/esm/index.js',
       format: 'esm',
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: 'dist/umd/index.js',
@@ -24,7 +24,9 @@ export default {
     }
   ],
   plugins: [
-    typescript({ tsconfig: './tsconfig.json' }),
+    typescript({
+      tsconfig: './tsconfig.json',
+    }),
     copy({
       targets: [
         { src: 'jpostcode-data/data/json/*', dest: 'dist/jpostcode-data/data/json' }
