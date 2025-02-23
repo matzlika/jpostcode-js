@@ -79,6 +79,10 @@ npm test
 
 Contributions are welcome! Please open an issue or submit a pull request on GitHub.
 
+## Thanks
+
+This project makes use of data from the [jpostcode-data](https://github.com/kufu/jpostcode-data) library. We appreciate the efforts of the maintainers and contributors of this library.
+
 ## License
 
 This project is licensed under the MIT License.
