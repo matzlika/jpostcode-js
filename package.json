@@ -1,6 +1,6 @@
 {
   "name": "jpostcode",
-  "version": "0.14.20250222",
+  "version": "0.15.20250222",
   "description": "A library for finding Japanese addresses by postal code.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
