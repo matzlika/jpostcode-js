@@ -6,6 +6,19 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "keywords": [
+    "jpostcode",
+    "Japanese addresses",
+    "postal code",
+    "address lookup",
+    "Japan",
+    "prefecture",
+    "city",
+    "town",
+    "Kana",
+    "TypeScript",
+    "JavaScript"
+  ],
   "scripts": {
     "build": "npm run build:js && npm run build:types",
     "build:js": "node esbuild.mjs",
