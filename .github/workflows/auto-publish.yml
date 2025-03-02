@@ -23,14 +23,24 @@ jobs:
       - name: Check for submodule updates
         id: check_submodule
         run: |
-          git submodule update --remote
-          if git diff --submodule|grep -q "update_jpostcode_data"; then
-            echo 'has changes'
+          if curl -s "https://api.github.com/repos/kufu/jpostcode-data/pulls" |jq '.[].title'|grep -q "bundle exec rake jpostcode:data:update_all"; then
+            echo 'has a pull request'
             echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
           else
-            echo 'no valid changes'
+            echo 'no pull requests'
           fi
 
+      - name: Fetch the Pull Request
+        if: env.SUBMODULE_CHANGED == 'true'
+        run: |
+          pr_number=$(node scripts/find-pull-request.js)
+          if [[ "$pr_number" != "undefined" && -n "$pr_number" ]]; then
+              echo "処理を実行: $pr_number"
+              cd jpostcode-data && git fetch origin refs/pull/$pr_number/merge:pr-$pr_number && git checkout pr-$pr_number
+          else
+              echo "出力がundefinedのため、処理をスキップ"
+              echo "SUBMODULE_CHANGED=false" >> $GITHUB_ENV
+          fi
 
       - name: Configure Git
         if: env.SUBMODULE_CHANGED == 'true'
@@ -42,7 +52,7 @@ jobs:
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
           MAJOR_MINOR=$(jq -r '.version' package.json | awk -F. '{print $1"."$2}')
-          TIMESTAMP=$(date +'%Y%m%d')
+          TIMESTAMP=$(date +'%Y%m')
           NEW_VERSION="$MAJOR_MINOR.$TIMESTAMP"
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           jq --arg v "$NEW_VERSION" '.version = $v' package.json > temp.json && mv temp.json package.json
