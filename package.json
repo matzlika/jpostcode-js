@@ -1,6 +1,6 @@
 {
   "name": "jpostcode",
-  "version": "0.17.202503",
+  "version": "0.17.202502",
   "description": "A library for finding Japanese addresses by postal code.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -28,13 +28,12 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
+  "devDependencies": {
     "@types/jest": "^29.5.14",
     "esbuild": "^0.25.0",
     "npm-check-updates": "^17.1.14",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "tsc": "^2.0.4",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3"
   }
