@@ -39,6 +39,7 @@ jobs:
               cd jpostcode-data && git fetch origin refs/pull/$pr_number/merge:pr-$pr_number && git checkout pr-$pr_number
           else
               echo "出力がundefinedのため、処理をスキップ"
+              echo "SUBMODULE_CHANGED=false" >> $GITHUB_ENV
           fi
 
       - name: Configure Git
