@@ -59,7 +59,7 @@ if (addresses.length > 0) {
 ## Features
 
 - **Find Address by Postal Code**: Retrieve detailed address information using a postal code.
-- **Handle Non-existent Postal Codes**: Returns `null` if the postal code does not exist.
+- **Handle Non-existent Postal Codes**: Returns empty list if the postal code does not exist.
 
 ## Build and Test
 
