@@ -44,6 +44,13 @@ jobs:
           mkdir -p docs/dist
           cp -r dist/* docs/dist/
 
+      - name: Copy jpostcode-data for GitHub Pages
+        run: |
+          # Remove symbolic link if exists and copy actual data
+          rm -rf docs/data
+          mkdir -p docs/data
+          cp -r jpostcode-data/data/* docs/data/
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
