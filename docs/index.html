@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jpostcode - 日本の郵便番号検索ライブラリ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .demo-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-self: end;
+        }
+
+        button:hover {
+            background: #5a6fd8;
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .address-card {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .address-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .address-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .installation {
+            background: #2d3748;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .installation h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: #1a202c;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #68d391;
+            font-family: 'Courier New', monospace;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .error {
+            color: #e53e3e;
+            background: #fed7d7;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .no-result {
+            color: #d69e2e;
+            background: #faf089;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .address-info {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Jpostcode</h1>
+            <p class="subtitle">日本の郵便番号から住所を検索するライブラリ</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="demo-section">
+                <h2>🔍 郵便番号検索デモ</h2>
+                <p>郵便番号を入力して住所を検索してみてください。ハイフンありなしどちらでも検索できます。</p>
+                
+                <div class="search-form">
+                    <div class="input-group">
+                        <label for="postalCode">郵便番号</label>
+                        <input type="text" id="postalCode" placeholder="例: 100-0001 または 1000001" maxlength="8">
+                    </div>
+                    <button onclick="searchAddress()">検索</button>
+                </div>
+
+                <div id="searchResult"></div>
+            </section>
+
+            <section class="demo-section">
+                <h2>✨ 主な機能</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">📮</div>
+                        <h3>郵便番号検索</h3>
+                        <p>7桁の郵便番号から詳細な住所情報を取得できます。都道府県、市区町村、町域名を日本語とカナの両方で提供します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🗾</div>
+                        <h3>全国対応</h3>
+                        <p>日本全国の郵便番号に対応。最新の郵便番号データを使用して正確な住所情報を提供します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>高速検索</h3>
+                        <p>効率的なデータ構造により、高速な検索を実現。大量の検索処理にも対応できます。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="installation">
+                <div class="container">
+                    <h2>📦 インストール</h2>
+                    <p>npmを使用してライブラリをインストールできます：</p>
+                    <div class="code-block">
+                        <code>npm install jpostcode</code>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">使用例 (JavaScript)</h3>
+                    <div class="code-block">
+                        <code>
+const { Jpostcode } = require('jpostcode');<br><br>
+const addresses = Jpostcode.find('1000001');<br>
+if (addresses.length > 0) {<br>
+&nbsp;&nbsp;for (const address of addresses) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`都道府県: ${address.prefecture}`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`市区町村: ${address.city}`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`町域: ${address.town}`);<br>
+&nbsp;&nbsp;}<br>
+}
+                        </code>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">使用例 (TypeScript)</h3>
+                    <div class="code-block">
+                        <code>
+import { Address, Jpostcode } from 'jpostcode';<br><br>
+const addresses: Address[] = Jpostcode.find('1000001');<br>
+if (addresses.length > 0) {<br>
+&nbsp;&nbsp;for (const address of addresses) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`都道府県: ${address.prefecture}`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`市区町村: ${address.city}`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`町域: ${address.town}`);<br>
+&nbsp;&nbsp;}<br>
+}
+                        </code>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jpostcode. MIT License.</p>
+            <p>このプロジェクトは <a href="https://github.com/kufu/jpostcode-data" style="color: #68d391;">jpostcode-data</a> のデータを使用しています。</p>
+        </div>
+    </footer>
+
+    <script src="./jpostcode-browser.js"></script>
+    <script>
+        async function searchAddress() {
+            const postalCode = document.getElementById('postalCode').value.trim();
+            const resultDiv = document.getElementById('searchResult');
+            
+            if (!postalCode) {
+                resultDiv.innerHTML = '<div class="error">郵便番号を入力してください。</div>';
+                return;
+            }
+
+            // 郵便番号の正規化（ハイフンを除去）
+            const normalizedCode = postalCode.replace('-', '');
+            
+            if (!/^\d{7}$/.test(normalizedCode)) {
+                resultDiv.innerHTML = '<div class="error">正しい郵便番号を入力してください（7桁の数字）。</div>';
+                return;
+            }
+
+            // 検索中の表示
+            resultDiv.innerHTML = '<div style="text-align: center; padding: 2rem;">🔍 検索中...</div>';
+
+            try {
+                // 実際のライブラリを使用して検索
+                const addresses = await Jpostcode.find(normalizedCode);
+                
+                if (!addresses || addresses.length === 0) {
+                    resultDiv.innerHTML = `
+                        <div class="no-result">
+                            郵便番号「${postalCode}」に対応する住所が見つかりませんでした。<br>
+                            <small>※ 存在しない郵便番号か、データに含まれていない可能性があります。</small>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let resultHTML = '<div class="result"><h3>検索結果</h3>';
+                
+                addresses.forEach((address, index) => {
+                    resultHTML += `
+                        <div class="address-card">
+                            <h3>住所情報 ${addresses.length > 1 ? `(${index + 1}/${addresses.length})` : ''}</h3>
+                            <div class="address-info">
+                                <div class="info-item">
+                                    <span class="info-label">郵便番号:</span>
+                                    <span class="info-value">${address.zipCode}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">都道府県:</span>
+                                    <span class="info-value">${address.prefecture} (${address.prefectureKana})</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">市区町村:</span>
+                                    <span class="info-value">${address.city} (${address.cityKana})</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">町域:</span>
+                                    <span class="info-value">${address.town || '（なし）'} ${address.townKana ? `(${address.townKana})` : ''}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">都道府県コード:</span>
+                                    <span class="info-value">${address.prefectureCode}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                resultHTML += '</div>';
+                resultDiv.innerHTML = resultHTML;
+            } catch (error) {
+                console.error('検索エラー:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        検索中にエラーが発生しました。しばらく時間をおいて再度お試しください。<br>
+                        <small>エラー詳細: ${error.message}</small>
+                    </div>
+                `;
+            }
+        }
+
+        // Enterキーでの検索
+        document.getElementById('postalCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchAddress();
+            }
+        });
+
+        // ページ読み込み時にサンプル検索を実行
+        window.addEventListener('load', function() {
+            document.getElementById('postalCode').value = '100-0001';
+            searchAddress();
+        });
+    </script>
+</body>
+</html>

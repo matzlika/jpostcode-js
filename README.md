@@ -83,6 +83,42 @@ Contributions are welcome! Please open an issue or submit a pull request on GitH
 
 This project makes use of data from the [jpostcode-data](https://github.com/kufu/jpostcode-data) library. We appreciate the efforts of the maintainers and contributors of this library.
 
+## GitHub Pages Demo
+
+This project includes a GitHub Pages demo site that showcases the library's functionality in Japanese.
+
+### Live Demo
+
+Visit the live demo at: `https://[your-username].github.io/[repository-name]/`
+
+### Setting up GitHub Pages
+
+1. Go to your repository's Settings tab
+2. Navigate to "Pages" in the left sidebar
+3. Under "Source", select "GitHub Actions"
+4. The site will be automatically deployed when you push to the main branch
+
+### Local Development
+
+To run the demo site locally:
+
+```bash
+# Build the project first
+npm run build
+
+# Create symbolic link to data files (if not already created)
+cd docs && ln -s ../jpostcode-data/data data && cd ..
+
+# Serve the docs directory with any static file server
+# For example, using Python:
+python -m http.server 8000 --directory docs
+
+# Or using Node.js http-server:
+npx http-server docs -p 8000
+```
+
+Then open `http://localhost:8000` in your browser.
+
 ## License
 
 This project is licensed under the MIT License.
