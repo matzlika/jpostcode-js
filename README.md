@@ -1,37 +1,37 @@
 # Jpostcode
 
-Jpostcode is a library for finding Japanese addresses by postal code. It provides detailed address information, including prefecture, city, and town names in both Japanese and Kana.
+Jpostcodeは、郵便番号から日本の住所を検索するためのライブラリです。都道府県、市区町村、町域名を、漢字とカナの両方で詳細に提供します。
 
-## Installation
+## インストール
 
-To install the library, use npm:
+npmを使用してライブラリをインストールします:
 
 ```bash
 npm install jpostcode
 ```
 
-## Usage
+## 使い方
 
-Here's a basic example of how to use the library:
+基本的な使用例を以下に示します:
 
 ### JavaScript
 
 ```javascript
 const { Jpostcode } = require('jpostcode');
 
-// Find an address by postal code
+// 郵便番号から住所を検索
 const addresses = Jpostcode.find('0010000');
 
 if (addresses.length > 0) {
-  // multiple addresses could be found from a postal code.
+  // 1つの郵便番号から複数の住所が見つかる場合があります
   for (const address of addresses) {
-    console.log(`Prefecture: ${address.prefecture} (${address.prefectureKana})`);
-    console.log(`City: ${address.city} (${address.cityKana})`);
-    console.log(`Town: ${address.town} (${address.townKana})`);
-    console.log(`Zip Code: ${address.zipCode}`);
+    console.log(`都道府県: ${address.prefecture} (${address.prefectureKana})`);
+    console.log(`市区町村: ${address.city} (${address.cityKana})`);
+    console.log(`町域: ${address.town} (${address.townKana})`);
+    console.log(`郵便番号: ${address.zipCode}`);
   }
 } else {
-  console.log('Address not found.');
+  console.log('住所が見つかりませんでした。');
 }
 ```
 
@@ -40,85 +40,138 @@ if (addresses.length > 0) {
 ```typescript
 import { Address, Jpostcode } from 'jpostcode';
 
-// Find an address by postal code
+// 郵便番号から住所を検索
 const addresses:Address[] = Jpostcode.find('0010000');
 
 if (addresses.length > 0) {
-  // multiple addresses could be found from a postal code.
+  // 1つの郵便番号から複数の住所が見つかる場合があります
   for (const address of addresses) {
-    console.log(`Prefecture: ${address.prefecture} (${address.prefectureKana})`);
-    console.log(`City: ${address.city} (${address.cityKana})`);
-    console.log(`Town: ${address.town} (${address.townKana})`);
-    console.log(`Zip Code: ${address.zipCode}`);
+    console.log(`都道府県: ${address.prefecture} (${address.prefectureKana})`);
+    console.log(`市区町村: ${address.city} (${address.cityKana})`);
+    console.log(`町域: ${address.town} (${address.townKana})`);
+    console.log(`郵便番号: ${address.zipCode}`);
   }
 } else {
-  console.log('Address not found.');
+  console.log('住所が見つかりませんでした。');
 }
 ```
 
-## Features
+### Webブラウザでの使用
 
-- **Find Address by Postal Code**: Retrieve detailed address information using a postal code.
-- **Handle Non-existent Postal Codes**: Returns empty list if the postal code does not exist.
+Webアプリケーションでは、AJAX版またはBundle版のいずれかを使用できます:
 
-## Build and Test
+#### AJAX版（ほとんどのケースで推奨）
 
-To build the project, run:
+```html
+<!-- AJAX版を読み込み -->
+<script src="https://cdn.jsdelivr.net/npm/jpostcode@latest/dist/jpostcode-web.js"></script>
+
+<script>
+// データファイルのベースURLを設定（オプション、デフォルトは './data/json/'）
+Jpostcode.setBaseUrl('https://your-cdn.com/jpostcode-data/');
+
+// 住所を検索（Promiseを返します）
+Jpostcode.find('1000001').then(addresses => {
+  if (addresses.length > 0) {
+    for (const address of addresses) {
+      console.log(`都道府県: ${address.prefecture}`);
+      console.log(`市区町村: ${address.city}`);
+      console.log(`町域: ${address.town}`);
+    }
+  }
+});
+</script>
+```
+
+#### Bundle版（全データ同梱）
+
+```html
+<!-- Bundle版を読み込み（ファイルサイズは大きいですが、オフラインでも動作します） -->
+<script src="https://cdn.jsdelivr.net/npm/jpostcode@latest/dist/jpostcode-web-bundle.js"></script>
+
+<script>
+// 住所を検索（同期処理）
+const addresses = Jpostcode.find('1000001');
+if (addresses.length > 0) {
+  for (const address of addresses) {
+    console.log(`都道府県: ${address.prefecture}`);
+    console.log(`市区町村: ${address.city}`);
+    console.log(`町域: ${address.town}`);
+  }
+}
+</script>
+```
+
+## 機能
+
+- **郵便番号による住所検索**: 郵便番号を使用して詳細な住所情報を取得
+- **存在しない郵便番号への対応**: 郵便番号が存在しない場合は空の配列を返却
+- **Webブラウザ対応**: WebアプリケーションのためのAJAX版とBundle版を提供
+- **TypeScript対応**: 完全なTypeScript型定義を含む
+- **データの自動更新**: ソースデータが変更されると郵便番号データを自動更新
+
+## ビルドとテスト
+
+プロジェクトをビルドするには:
 
 ```bash
 npm run build
 ```
 
-To run tests, use:
+テストを実行するには:
 
 ```bash
 npm test
 ```
 
-## Contributing
+## 貢献
 
-Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+貢献を歓迎します！GitHubでissueを開くか、プルリクエストを送信してください。
 
-## Thanks
+## 謝辞
 
-This project makes use of data from the [jpostcode-data](https://github.com/kufu/jpostcode-data) library. We appreciate the efforts of the maintainers and contributors of this library.
+このプロジェクトは [jpostcode-data](https://github.com/kufu/jpostcode-data) ライブラリのデータを使用しています。このライブラリのメンテナと貢献者の皆様に感謝いたします。
 
-## GitHub Pages Demo
+## GitHub Pagesデモ
 
-This project includes a GitHub Pages demo site that showcases the library's functionality in Japanese.
+このプロジェクトには、ライブラリの機能を日本語で紹介するGitHub Pagesデモサイトが含まれています。
 
-### Live Demo
+### ライブデモ
 
-Visit the live demo at: `https://[your-username].github.io/[repository-name]/`
+ライブデモは以下で公開されています: `https://[your-username].github.io/[repository-name]/`
 
-### Setting up GitHub Pages
+### GitHub Pagesの設定
 
-1. Go to your repository's Settings tab
-2. Navigate to "Pages" in the left sidebar
-3. Under "Source", select "GitHub Actions"
-4. The site will be automatically deployed when you push to the main branch
+1. リポジトリのSettingsタブに移動
+2. 左サイドバーの"Pages"に移動
+3. "Source"で"GitHub Actions"を選択
+4. mainブランチにプッシュすると自動的にデプロイされます
 
-### Local Development
+### ローカル開発
 
-To run the demo site locally:
+デモサイトをローカルで実行するには:
 
 ```bash
-# Build the project first
+# まずプロジェクトをビルド
 npm run build
 
-# Create symbolic link to data files (if not already created)
+# データファイルへのシンボリックリンクを作成（まだ作成していない場合）
 cd docs && ln -s ../jpostcode-data/data data && cd ..
 
-# Serve the docs directory with any static file server
-# For example, using Python:
+# 静的ファイルサーバーでdocsディレクトリを配信
+# 例: Pythonを使用する場合
 python -m http.server 8000 --directory docs
 
-# Or using Node.js http-server:
+# または Node.js http-serverを使用する場合
 npx http-server docs -p 8000
 ```
 
-Then open `http://localhost:8000` in your browser.
+その後、ブラウザで `http://localhost:8000` を開きます。
 
-## License
+## ライセンス
 
-This project is licensed under the MIT License.
+このプロジェクトはMITライセンスの下でライセンスされています。
+
+---
+
+**English version**: [README.en.md](README.en.md)
