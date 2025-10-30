@@ -25,7 +25,14 @@
     "town",
     "Kana",
     "TypeScript",
-    "JavaScript"
+    "JavaScript",
+    "郵便番号",
+    "住所検索",
+    "日本",
+    "都道府県",
+    "市区町村",
+    "町域",
+    "カナ"
   ],
   "scripts": {
     "build": "npm run build:js && npm run build:types",
