@@ -138,7 +138,7 @@ This project includes a GitHub Pages demo site that showcases the library's func
 
 ### Live Demo
 
-Visit the live demo at: `https://[your-username].github.io/[repository-name]/`
+Visit the live demo at: https://matzlika.github.io/jpostcode-js/
 
 ### Setting up GitHub Pages
 

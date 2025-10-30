@@ -138,7 +138,7 @@ npm test
 
 ### ライブデモ
 
-ライブデモは以下で公開されています: `https://[your-username].github.io/[repository-name]/`
+ライブデモは以下で公開されています: https://matzlika.github.io/jpostcode-js/
 
 ### GitHub Pagesの設定
 
