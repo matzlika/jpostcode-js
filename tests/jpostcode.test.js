@@ -1,4 +1,4 @@
-const { Jpostcode, Address } = require('../dist/cjs/index.js');
+const { Jpostcode, Address } = require('../dist/index.cjs.js');
 
 describe('Jpostcode', () => {
   test('should find addresses by postal code', () => {
