@@ -13,6 +13,10 @@ on:
 jobs:
   check-and-publish:
     runs-on: ubuntu-latest
+    environment: npm-publish
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -76,9 +80,6 @@ jobs:
       - name: Publish to npm
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
-          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
           npm install
           npm run build
-          npm publish
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish --provenance --access public
