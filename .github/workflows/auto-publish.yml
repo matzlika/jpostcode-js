@@ -1,19 +1,18 @@
-name: Auto Publish to npm on Submodule Update
+name: Auto Update on Submodule Update
 
 on:
   schedule:
-    - cron: "0 1 1 * *"  # Runs daily at 1 AM UTC
+    - cron: "0 1 1 * *"  # Runs monthly at 1 AM UTC on the 1st
   workflow_dispatch:  # Allows manual trigger
   push:
     paths:
-      - "jpostcode-data/**"  # Replace with your actual submodule path
+      - "jpostcode-data/**"
     branches:
       - main
 
 jobs:
-  check-and-publish:
+  check-and-update:
     runs-on: ubuntu-latest
-    environment: npm-publish
     permissions:
       contents: write
       id-token: write
@@ -23,6 +22,12 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Check for submodule updates
         id: check_submodule
@@ -77,9 +82,12 @@ jobs:
           git tag -a "$TAG_NAME" -m "Submodule updated on $(date +'%Y-%m-%d %H:%M:%S')"
           git push origin "$TAG_NAME"
 
-      - name: Publish to npm
+      - name: Install dependencies and build
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
           npm install
           npm run build
-          npm publish --provenance --access public
+
+      - name: Publish to npm
+        if: env.SUBMODULE_CHANGED == 'true'
+        run: npm publish --provenance --access public
