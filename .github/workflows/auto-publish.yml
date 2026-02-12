@@ -32,12 +32,13 @@ jobs:
       - name: Check for submodule updates
         id: check_submodule
         run: |
-          if curl -s "https://api.github.com/repos/kufu/jpostcode-data/pulls" |jq '.[].title'|grep -q "bundle exec rake jpostcode:data:update_all"; then
-            echo 'has a pull request'
-            echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
-          else
-            echo 'no pull requests'
-          fi
+          echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
+          # if curl -s "https://api.github.com/repos/kufu/jpostcode-data/pulls" |jq '.[].title'|grep -q "bundle exec rake jpostcode:data:update_all"; then
+          #   echo 'has a pull request'
+          #   echo "SUBMODULE_CHANGED=true" >> $GITHUB_ENV
+          # else
+          #   echo 'no pull requests'
+          # fi
 
       - name: Fetch the Pull Request
         if: env.SUBMODULE_CHANGED == 'true'
