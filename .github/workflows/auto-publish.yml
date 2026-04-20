@@ -2,7 +2,7 @@ name: Auto Publish to npm on Submodule Update
 
 on:
   schedule:
-    - cron: "0 1 1 * *"  # Runs daily at 1 AM UTC
+    - cron: "0 1 1 * *"  # Runs at 1 AM UTC on the first day of each month
   workflow_dispatch:  # Allows manual trigger
   push:
     paths:
@@ -86,6 +86,6 @@ jobs:
       - name: Publish to npm
         if: env.SUBMODULE_CHANGED == 'true'
         run: |
-          npm install
+          npm ci
           npm run build
           npm publish

@@ -56,6 +56,15 @@ if (addresses.length > 0) {
 }
 ```
 
+### Node.js ESM
+
+```javascript
+import { Jpostcode } from 'jpostcode';
+
+const addresses = Jpostcode.find('0010000');
+console.log(addresses[0]?.prefecture);
+```
+
 ### Webブラウザでの使用
 
 Webアプリケーションでは、AJAX版またはBundle版のいずれかを使用できます:
@@ -117,6 +126,8 @@ if (addresses.length > 0) {
 ```bash
 npm run build
 ```
+
+このコマンドで Node.js 用の CommonJS / ESM と、ブラウザ用の `dist/jpostcode-web.js` / `dist/jpostcode-web-bundle.js` を生成します。
 
 テストを実行するには:
 

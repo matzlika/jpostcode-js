@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 
 interface AddressData {
   postcode: string;
@@ -49,10 +49,13 @@ class Address {
 }
 
 class Jpostcode {
-  private static DATA_DIR = path.join(__dirname, '../dist/jpostcode-data/data/json');
+  private static DATA_DIR = [
+    path.join(__dirname, './jpostcode-data/data/json'),
+    path.join(__dirname, '../jpostcode-data/data/json')
+  ].find((dir) => fs.existsSync(dir)) ?? path.join(__dirname, './jpostcode-data/data/json');
 
   static find(postalCode: string): Address[] {
-    const normalizedCode = postalCode.replace('-', '');
+    const normalizedCode = postalCode.replace(/-/g, '');
     const upper = normalizedCode.substring(0, 3);
     const lower = normalizedCode.substring(3);
     const file = path.join(this.DATA_DIR, `${upper}.json`);

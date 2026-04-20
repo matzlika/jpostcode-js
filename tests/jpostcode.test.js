@@ -1,3 +1,4 @@
+const { existsSync } = require('node:fs');
 const { Jpostcode, Address } = require('../dist/index.cjs.js');
 
 describe('Jpostcode', () => {
@@ -30,5 +31,10 @@ describe('Jpostcode', () => {
     const addresses = Jpostcode.find('9999999');
     expect(addresses).toBeInstanceOf(Array);
     expect(addresses.length).toBe(0);
+  });
+
+  test('should generate browser builds', () => {
+    expect(existsSync('dist/jpostcode-web.js')).toBe(true);
+    expect(existsSync('dist/jpostcode-web-bundle.js')).toBe(true);
   });
 });

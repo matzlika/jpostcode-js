@@ -56,6 +56,15 @@ if (addresses.length > 0) {
 }
 ```
 
+### Node.js ESM
+
+```javascript
+import { Jpostcode } from 'jpostcode';
+
+const addresses = Jpostcode.find('0010000');
+console.log(addresses[0]?.prefecture);
+```
+
 ### Web Browser Usage
 
 For web applications, you can use either the AJAX version or the Bundle version:
@@ -117,6 +126,8 @@ To build the project, run:
 ```bash
 npm run build
 ```
+
+This command generates the Node.js CommonJS / ESM builds and the browser bundles at `dist/jpostcode-web.js` and `dist/jpostcode-web-bundle.js`.
 
 To run tests, use:
 
