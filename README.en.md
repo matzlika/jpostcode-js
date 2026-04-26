@@ -2,6 +2,8 @@
 
 Jpostcode is a library for finding Japanese addresses by postal code. It provides detailed address information, including prefecture, city, and town names in both Japanese and Kana.
 
+> 🗓 **Auto-updated monthly**: Whenever the upstream [jpostcode-data](https://github.com/kufu/jpostcode-data) ingests Japan Post's latest dataset, this library is automatically published to npm with the refreshed data. Just bump the dependency to stay current.
+
 ## Installation
 
 To install the library, use npm:
@@ -117,7 +119,7 @@ if (addresses.length > 0) {
 - **Handle Non-existent Postal Codes**: Returns empty list if the postal code does not exist.
 - **Web Browser Support**: Available in both AJAX and Bundle versions for web applications.
 - **TypeScript Support**: Full TypeScript definitions included.
-- **Auto-updating Data**: Automatically updates postal code data when the source data changes.
+- **Always Up-to-Date Postal Data**: Monthly automated checks against the upstream data source ([jpostcode-data](https://github.com/kufu/jpostcode-data)) trigger a new npm release whenever Japan Post's dataset is refreshed. Versions follow `MAJOR.MINOR.YYYYMM` so the data vintage is visible at a glance.
 
 ## Build and Test
 
