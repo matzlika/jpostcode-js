@@ -94,6 +94,29 @@ Jpostcode.find('1000001').then(addresses => {
 </script>
 ```
 
+##### Official Cloudflare CDN Build
+
+Both the library script and the postal code data are published to Cloudflare Pages, so you can drop in the library without npm or self-hosted data:
+
+```html
+<script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"></script>
+
+<script>
+// Point the library at the same CDN for data lookups
+Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
+Jpostcode.find('1000001').then(addresses => {
+  if (addresses.length > 0) {
+    console.log(`Prefecture: ${addresses[0].prefecture}`);
+  }
+});
+</script>
+```
+
+- Re-deployed automatically whenever upstream [jpostcode-data](https://github.com/kufu/jpostcode-data) ships a monthly update
+- Served from Cloudflare's global edge (including Tokyo) for low latency
+- JSON responses ship with `s-maxage=2592000` (30 days at the edge) / `max-age=86400` (1 day in browsers)
+
 #### Bundle Version (All data included)
 
 ```html

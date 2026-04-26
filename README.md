@@ -94,6 +94,29 @@ Jpostcode.find('1000001').then(addresses => {
 </script>
 ```
 
+##### 公式 Cloudflare CDN 版
+
+ライブラリ本体と郵便番号データの両方を Cloudflare Pages から配信しています。npm を介さず、ホスティングも自前で用意せずに使えます:
+
+```html
+<script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"></script>
+
+<script>
+// データも同じ CDN から取得するように設定
+Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
+Jpostcode.find('1000001').then(addresses => {
+  if (addresses.length > 0) {
+    console.log(`都道府県: ${addresses[0].prefecture}`);
+  }
+});
+</script>
+```
+
+- 上流の [jpostcode-data](https://github.com/kufu/jpostcode-data) の月次更新を反映して自動再配信
+- 東京を含む Cloudflare エッジから低レイテンシで配信
+- JSON データには `s-maxage=2592000` (エッジ30日) / `max-age=86400` (ブラウザ1日) のキャッシュヘッダ
+
 #### Bundle版（全データ同梱）
 
 ```html

@@ -1195,19 +1195,6 @@
     "office_name": null,
     "office_name_kana": null
   },
-  "0149": {
-    "postcode": "8700149",
-    "prefecture": "大分県",
-    "prefecture_kana": "オオイタケン",
-    "prefecture_code": 44,
-    "city": "大分市",
-    "city_kana": "オオイタシ",
-    "town": "高城団地",
-    "town_kana": "タカジョウダンチ",
-    "street": null,
-    "office_name": null,
-    "office_name_kana": null
-  },
   "0150": {
     "postcode": "8700150",
     "prefecture": "大分県",
@@ -1442,6 +1429,19 @@
     "office_name": null,
     "office_name_kana": null
   },
+  "0169": {
+    "postcode": "8700169",
+    "prefecture": "大分県",
+    "prefecture_kana": "オオイタケン",
+    "prefecture_code": 44,
+    "city": "大分市",
+    "city_kana": "オオイタシ",
+    "town": "明野高城",
+    "town_kana": "アケノタカジョウ",
+    "street": null,
+    "office_name": null,
+    "office_name_kana": null
+  },
   "0171": {
     "postcode": "8700171",
     "prefecture": "大分県",
@@ -1503,9 +1503,9 @@
     "city_kana": "オオイタシ",
     "town": "大字中ノ洲",
     "town_kana": null,
-    "street": "２",
-    "office_name": "昭和電工　株式会社　大分事務所",
-    "office_name_kana": "シヨウワデンコウ カブシキガイシヤ オオイタジムシヨ"
+    "street": "２番地",
+    "office_name": "クラサスケミカル　株式会社",
+    "office_name_kana": "クラサスケミカル カブシキガイシヤ"
   },
   "0192": {
     "postcode": "8700192",
@@ -2309,9 +2309,9 @@
     "city_kana": "オオイタシ",
     "town": "大字里",
     "town_kana": null,
-    "street": "２１１１−２",
-    "office_name": "旭化成メディカルＭＴ　株式会社",
-    "office_name_kana": "アサヒカセイメデイカルエムテイ- カブシキガイシヤ"
+    "street": "２１１１番２",
+    "office_name": "旭化成ライフサイエンスＭＴ　株式会社",
+    "office_name_kana": "アサヒカセイライフサイエンスエムテイ カブシキガイシヤ"
   },
   "0397": {
     "postcode": "8700397",

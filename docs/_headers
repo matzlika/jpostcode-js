@@ -1,0 +1,5 @@
+/data/json/*
+  Cache-Control: public, max-age=86400, s-maxage=2592000
+
+/dist/*
+  Cache-Control: public, max-age=86400, s-maxage=2592000

@@ -2125,9 +2125,9 @@
     "prefecture_code": 15,
     "city": "長岡市",
     "city_kana": "ナガオカシ",
-    "town": "金町",
-    "town_kana": "カネマチ",
-    "street": "２丁目１−５",
+    "town": "中央公園",
+    "town_kana": "チュウオウコウエン",
+    "street": "１番３６号",
     "office_name": "長岡市役所　栃尾支所",
     "office_name_kana": "ナガオカシヤクシヨ トチオシシヨ"
   },
@@ -5485,7 +5485,7 @@
     "prefecture_code": 15,
     "city": "長岡市",
     "city_kana": "ナガオカシ",
-    "town": "与板町槇原",
+    "town": "与板町槙原",
     "town_kana": "ヨイタマチマキハラ",
     "street": null,
     "office_name": null,
@@ -6137,9 +6137,9 @@
     "city_kana": "ナガオカシ",
     "town": "東蔵王",
     "town_kana": "ヒガシザオウ",
-    "street": "２丁目２−８３",
-    "office_name": "石油資源開発　株式会社　長岡鉱業所",
-    "office_name_kana": "セキユシゲンカイハツ カブシキカイシヤ ナガオカコウギヨウシヨ"
+    "street": "２−２−８３",
+    "office_name": "石油資源開発　株式会社　国内事業本部",
+    "office_name_kana": "セキユシゲンカイハツ カブシキガイシヤ コクナイジギヨウホンブ"
   },
   "8558": {
     "postcode": "9408558",
@@ -6491,6 +6491,19 @@
     "street": "１丁目３番８８号長岡地方合同庁舎",
     "office_name": "長岡税務署",
     "office_name_kana": "ナガオカゼイムシヨ"
+  },
+  "8655": {
+    "postcode": "9408655",
+    "prefecture": "新潟県",
+    "prefecture_kana": "ニイガタケン",
+    "prefecture_code": 15,
+    "city": "長岡市",
+    "city_kana": "ナガオカシ",
+    "town": "千歳",
+    "town_kana": "センザイ",
+    "street": "１丁目３番８８号長岡地方合同庁舎",
+    "office_name": "関東信越国税局　新潟業務センター長岡事務室",
+    "office_name_kana": "カントウシンエツコクゼイキヨク ニイガタギヨウムセンタ-ナガオカジムシツ"
   },
   "8660": {
     "postcode": "9408660",

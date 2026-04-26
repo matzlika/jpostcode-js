@@ -6380,6 +6380,19 @@
     "office_name": null,
     "office_name_kana": null
   },
+  "3314": {
+    "postcode": "9813314",
+    "prefecture": "宮城県",
+    "prefecture_kana": "ミヤギケン",
+    "prefecture_code": 4,
+    "city": "富谷市",
+    "city_kana": "トミヤシ",
+    "town": "高屋敷西",
+    "town_kana": "タカヤシキニシ",
+    "street": null,
+    "office_name": null,
+    "office_name_kana": null
+  },
   "3321": {
     "postcode": "9813321",
     "prefecture": "宮城県",
@@ -7416,9 +7429,9 @@
     "prefecture_code": 4,
     "city": "黒川郡大和町",
     "city_kana": "クロカワグンタイワチョウ",
-    "town": "吉岡",
-    "town_kana": "ヨシオカ",
-    "street": "字町裏１６",
+    "town": "吉岡まほろば",
+    "town_kana": "ヨシオカマホロバ",
+    "street": "一丁目１番地の１",
     "office_name": "大和町役場",
     "office_name_kana": "タイワチヨウヤクバ"
   },

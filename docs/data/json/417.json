@@ -831,6 +831,19 @@
     "office_name": null,
     "office_name_kana": null
   },
+  "0818": {
+    "postcode": "4170818",
+    "prefecture": "静岡県",
+    "prefecture_kana": "シズオカケン",
+    "prefecture_code": 22,
+    "city": "富士市",
+    "city_kana": "フジシ",
+    "town": "末広",
+    "town_kana": "スエヒロ",
+    "street": null,
+    "office_name": null,
+    "office_name_kana": null
+  },
   "0821": {
     "postcode": "4170821",
     "prefecture": "静岡県",
@@ -1361,8 +1374,8 @@
     "town": "比奈",
     "town_kana": "ヒナ",
     "street": "７９８",
-    "office_name": "日本大昭和板紙吉永　株式会社",
-    "office_name_kana": "ニホンダイシヨウワイタガミヨシナガ カブシキガイシヤ"
+    "office_name": "日本製紙　株式会社　富士工場",
+    "office_name_kana": "ニツポンセイシ カブシキガイシヤ フジコウジヨウ"
   },
   "8522": {
     "postcode": "4178522",

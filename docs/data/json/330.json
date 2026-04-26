@@ -1298,8 +1298,8 @@
     "town": "常盤",
     "town_kana": "トキワ",
     "street": "５丁目８−４１",
-    "office_name": "読売新聞社　浦和支局",
-    "office_name_kana": "ヨミウリシンブンシヤ ウラワシキヨク"
+    "office_name": "読売新聞東京本社　さいたま支局",
+    "office_name_kana": "ヨミウリシンブントウキヨウホンシヤ サイタマシキヨク"
   },
   "8552": {
     "postcode": "3308552",
@@ -1391,6 +1391,19 @@
     "street": "１丁目１−１３",
     "office_name": "新洋信販　株式会社",
     "office_name_kana": "シンヨウシンパン カブシキガイシヤ"
+  },
+  "8567": {
+    "postcode": "3308567",
+    "prefecture": "埼玉県",
+    "prefecture_kana": "サイタマケン",
+    "prefecture_code": 11,
+    "city": "さいたま市大宮区",
+    "city_kana": "サイタマシオオミヤク",
+    "town": "堀の内町",
+    "town_kana": "ホリノウチチョウ",
+    "street": "１−６１５",
+    "office_name": "学校法人　開成学園　大宮開成中学・高等学校",
+    "office_name_kana": "ガツコウホウジン カイセイガクエン オオミヤカイセイチユウガクコウトウガツコウ"
   },
   "8571": {
     "postcode": "3308571",
@@ -1573,19 +1586,6 @@
     "street": "６８２−２大宮情報文化センター１６階",
     "office_name": "全国健康保険協会　埼玉支部",
     "office_name_kana": "ゼンコクケンコウホケンキヨウカイ サイタマシブ"
-  },
-  "8688": {
-    "postcode": "3308688",
-    "prefecture": "埼玉県",
-    "prefecture_kana": "サイタマケン",
-    "prefecture_code": 11,
-    "city": "さいたま市大宮区",
-    "city_kana": "サイタマシオオミヤク",
-    "town": "土手町",
-    "town_kana": "ドテチョウ",
-    "street": "１丁目２ＪＡ共済埼玉ビル",
-    "office_name": "アクサ損害保険　株式会社",
-    "office_name_kana": "アクサソンガイホケン カブシキカイシヤ"
   },
   "8708": {
     "postcode": "3308708",
@@ -2289,6 +2289,19 @@
     "office_name": "（株）　エフエム浦和",
     "office_name_kana": "(カブ) エフエムウラワ"
   },
+  "9619": {
+    "postcode": "3309619",
+    "prefecture": "埼玉県",
+    "prefecture_kana": "サイタマケン",
+    "prefecture_code": 11,
+    "city": "さいたま市浦和区",
+    "city_kana": "サイタマシウラワク",
+    "town": "北浦和",
+    "town_kana": "キタウラワ",
+    "street": "５丁目１２番７号",
+    "office_name": "関東信越国税局　北浦和業務センター",
+    "office_name_kana": "カントウシンエツコクゼイキヨク キタウラワギヨウムセンタ-"
+  },
   "9621": {
     "postcode": "3309621",
     "prefecture": "埼玉県",
@@ -2576,18 +2589,5 @@
       "office_name": "日本郵便　株式会社　関東支社",
       "office_name_kana": "ニホンユウビン カブシキガイシヤ カントウシシヤ"
     }
-  ],
-  "9850": {
-    "postcode": "3309850",
-    "prefecture": "埼玉県",
-    "prefecture_kana": "サイタマケン",
-    "prefecture_code": 11,
-    "city": "さいたま市浦和区",
-    "city_kana": "サイタマシウラワク",
-    "town": "針ヶ谷",
-    "town_kana": "ハリガヤ",
-    "street": "４丁目２−１８（さいたま新都心郵便局私書箱第５０号）",
-    "office_name": "太陽生命保険　相互会社",
-    "office_name_kana": "タイヨウセイメイホケン ソウゴガイシヤ"
-  }
+  ]
 }

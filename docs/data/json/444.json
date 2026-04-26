@@ -2963,6 +2963,19 @@
     "office_name": null,
     "office_name_kana": null
   },
+  "0820": {
+    "postcode": "4440820",
+    "prefecture": "愛知県",
+    "prefecture_kana": "アイチケン",
+    "prefecture_code": 23,
+    "city": "岡崎市",
+    "city_kana": "オカザキシ",
+    "town": "若松西",
+    "town_kana": "ワカマツニシ",
+    "street": null,
+    "office_name": null,
+    "office_name_kana": null
+  },
   "0821": {
     "postcode": "4440821",
     "prefecture": "愛知県",
@@ -3063,6 +3076,32 @@
     "city_kana": "オカザキシ",
     "town": "針崎",
     "town_kana": "ハリサキ",
+    "street": null,
+    "office_name": null,
+    "office_name_kana": null
+  },
+  "0829": {
+    "postcode": "4440829",
+    "prefecture": "愛知県",
+    "prefecture_kana": "アイチケン",
+    "prefecture_code": 23,
+    "city": "岡崎市",
+    "city_kana": "オカザキシ",
+    "town": "針崎西",
+    "town_kana": "ハリサキニシ",
+    "street": null,
+    "office_name": null,
+    "office_name_kana": null
+  },
+  "0830": {
+    "postcode": "4440830",
+    "prefecture": "愛知県",
+    "prefecture_kana": "アイチケン",
+    "prefecture_code": 23,
+    "city": "岡崎市",
+    "city_kana": "オカザキシ",
+    "town": "柱西",
+    "town_kana": "ハシラニシ",
     "street": null,
     "office_name": null,
     "office_name_kana": null
@@ -9166,9 +9205,9 @@
     "city_kana": "オカザキシ",
     "town": "日名北町",
     "town_kana": "ヒナキタマチ",
-    "street": "４−１",
-    "office_name": "ユニチカ　株式会社　岡崎工場",
-    "office_name_kana": "ユニチカ カブシキガイシヤ オカザキコウジヨウ"
+    "street": "四番地一",
+    "office_name": "ＮＢセーレン　株式会社",
+    "office_name_kana": "エヌビ-セ-レン カブシキカイシヤ"
   },
   "8512": {
     "postcode": "4448512",
@@ -9533,6 +9572,19 @@
     "street": "４番地５",
     "office_name": "株式会社　ＭＩＮＥＺＡＷＡ",
     "office_name_kana": "カブシキカイシヤ ミネザワ"
+  },
+  "8590": {
+    "postcode": "4448590",
+    "prefecture": "愛知県",
+    "prefecture_kana": "アイチケン",
+    "prefecture_code": 23,
+    "city": "岡崎市",
+    "city_kana": "オカザキシ",
+    "town": "舞木町",
+    "town_kana": "マイギチョウ",
+    "street": "字金森２００",
+    "office_name": "三井アウトレットパーク岡崎",
+    "office_name_kana": "ミツイアウトレツトパ-クオカザキ"
   },
   "8601": {
     "postcode": "4448601",

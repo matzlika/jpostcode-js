@@ -318,11 +318,11 @@
     "prefecture_code": 12,
     "city": "習志野市",
     "city_kana": "ナラシノシ",
-    "town": "茜浜",
-    "town_kana": "アカネハマ",
-    "street": "３−１−２",
-    "office_name": "株式会社　日立産機システム",
-    "office_name_kana": "カブシキガイシヤ ヒタチサンキシステム"
+    "town": "東習志野",
+    "town_kana": "ヒガシナラシノ",
+    "street": "７−１−９８",
+    "office_name": "株式会社　日立産機システム　千葉サービスステーション",
+    "office_name_kana": "カブシキガイシヤ ヒタチサンキシステム チバサ-ビスステ-シヨン"
   },
   "8525": {
     "postcode": "2758525",
@@ -479,6 +479,19 @@
     "street": "１−１−１",
     "office_name": "社会福祉法人　恩賜財団　済生会　千葉県済生会習志野病院",
     "office_name_kana": "シヤカイフクシホウジン オンシザイダン サイセイカイ チバケンサイセイカイナラシノビヨウイン"
+  },
+  "8581": {
+    "postcode": "2758581",
+    "prefecture": "千葉県",
+    "prefecture_kana": "チバケン",
+    "prefecture_code": 12,
+    "city": "習志野市",
+    "city_kana": "ナラシノシ",
+    "town": "芝園",
+    "town_kana": "シバゾノ",
+    "street": "２−１−９",
+    "office_name": "佐川印刷　（株）千葉工場",
+    "office_name_kana": "サガワインサツ (カブ)チバコウジヨウ"
   },
   "8585": {
     "postcode": "2758585",

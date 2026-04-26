@@ -2332,24 +2332,11 @@
     "prefecture_code": 18,
     "city": "福井市",
     "city_kana": "フクイシ",
-    "town": "江端町",
-    "town_kana": "エバタチョウ",
-    "street": "２０号１番地",
-    "office_name": "福井県　森林組合連合会",
-    "office_name_kana": "フクイケン シンリンクミアイレンゴウカイ"
-  },
-  "8568": {
-    "postcode": "9188568",
-    "prefecture": "福井県",
-    "prefecture_kana": "フクイケン",
-    "prefecture_code": 18,
-    "city": "福井市",
-    "city_kana": "フクイシ",
-    "town": "下荒井町",
-    "town_kana": "シモアライチョウ",
-    "street": "１９字５０番地",
-    "office_name": "福井トヨタ自動車　株式会社",
-    "office_name_kana": "フクイトヨタジドウシヤ カブシキガイシヤ"
+    "town": "合島町",
+    "town_kana": "ゴウシマチョウ",
+    "street": "３−１",
+    "office_name": "福井県森林組合連合会",
+    "office_name_kana": "フクイケンシンリンクミアイレンゴウカイ"
   },
   "8570": {
     "postcode": "9188570",
@@ -2426,8 +2413,8 @@
     "town": "南四ツ居",
     "town_kana": "ミナミヨツイ",
     "street": "１丁目９番１７号",
-    "office_name": "株式会社　パスポート",
-    "office_name_kana": "カブシキガイシヤ パスポ-ト"
+    "office_name": "株式会社　良知経営　北陸営業所",
+    "office_name_kana": "カブシキガイシヤ リヨウチケイエイ ホクリクエイギヨウシヨ"
   },
   "8585": {
     "postcode": "9188585",

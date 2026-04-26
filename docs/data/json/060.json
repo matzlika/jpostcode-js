@@ -1646,9 +1646,9 @@
     "prefecture_code": 1,
     "city": "札幌市中央区",
     "city_kana": "サッポロシチュウオウク",
-    "town": "北二条東",
-    "town_kana": "キタ2ジョウヒガシ",
-    "street": "４丁目サッポロファクトリー２条館４階",
+    "town": "南三条西",
+    "town_kana": "ミナミ3ジョウニシ",
+    "street": "１１丁目",
     "office_name": "札幌市中央市税事務所",
     "office_name_kana": "サツポロシチユウオウシゼイジムシヨ"
   },
@@ -2038,9 +2038,9 @@
     "prefecture_code": 1,
     "city": "札幌市中央区",
     "city_kana": "サッポロシチュウオウク",
-    "town": "大通西",
-    "town_kana": "オオドオリニシ",
-    "street": "２丁目９",
+    "town": "南三条西",
+    "town_kana": "ミナミ3ジョウニシ",
+    "street": "１１丁目",
     "office_name": "札幌市中央区役所",
     "office_name_kana": "サツポロシチユウオウクヤクシヨ"
   },
@@ -2415,11 +2415,11 @@
     "prefecture_code": 1,
     "city": "札幌市中央区",
     "city_kana": "サッポロシチュウオウク",
-    "town": "大通西",
-    "town_kana": "オオドオリニシ",
-    "street": "５丁目１１番地１",
-    "office_name": "株式会社　ロイズコンフェクト",
-    "office_name_kana": "カブシキガイシヤ ロイズコンフエクト"
+    "town": "北二条西",
+    "town_kana": "キタ2ジョウニシ",
+    "street": "１９丁目８番",
+    "office_name": "農林水産省　北海道農政事務所",
+    "office_name_kana": "ノウリンスイサンシヨウ ホツカイドウノウセイジムシヨ"
   },
   "8647": {
     "postcode": "0608647",
@@ -2454,9 +2454,9 @@
     "prefecture_code": 1,
     "city": "札幌市中央区",
     "city_kana": "サッポロシチュウオウク",
-    "town": "北二条東",
-    "town_kana": "キタ2ジョウヒガシ",
-    "street": "４丁目サッポロファクトリー２条館４階",
+    "town": "南三条西",
+    "town_kana": "ミナミ3ジョウニシ",
+    "street": "１１丁目",
     "office_name": "札幌市中央市税事務所　市民税課",
     "office_name_kana": "サツポロシチユウオウシゼイジムシヨ シミンゼイカ"
   },
@@ -2472,6 +2472,19 @@
     "street": "１丁目３（札幌中央郵便局私書箱第１６７号）",
     "office_name": "ホクレン　農業協同組合連合会",
     "office_name_kana": "ホクレン ノウギヨウキヨウドウクミアイレンゴウカイ"
+  },
+  "8652": {
+    "postcode": "0608652",
+    "prefecture": "北海道",
+    "prefecture_kana": "ホッカイドウ",
+    "prefecture_code": 1,
+    "city": "札幌市中央区",
+    "city_kana": "サッポロシチュウオウク",
+    "town": "北一条西",
+    "town_kana": "キタ1ジョウニシ",
+    "street": "３丁目３番地敷島北一条ビル５Ｆ",
+    "office_name": "札幌健康アプリ事務局",
+    "office_name_kana": "サツポロケンコウアプリジムキヨク"
   },
   "8654": {
     "postcode": "0608654",
@@ -2771,6 +2784,19 @@
     "street": "５丁目３−１０（札幌中央郵便局私書箱第２２５号）",
     "office_name": "北海道労働金庫　本部",
     "office_name_kana": "ホツカイドウロウドウキンコ ホンブ"
+  },
+  "8766": {
+    "postcode": "0608766",
+    "prefecture": "北海道",
+    "prefecture_kana": "ホッカイドウ",
+    "prefecture_code": 1,
+    "city": "札幌市中央区",
+    "city_kana": "サッポロシチュウオウク",
+    "town": "南三条西",
+    "town_kana": "ミナミ3ジョウニシ",
+    "street": "１１丁目",
+    "office_name": "札幌市中央区役所",
+    "office_name_kana": "サツポロシチユウオウクヤクシヨ"
   },
   "8767": {
     "postcode": "0608767",

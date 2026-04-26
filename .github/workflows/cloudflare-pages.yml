@@ -1,0 +1,54 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Copy built files to docs
+        run: |
+          mkdir -p docs/dist
+          cp -r dist/* docs/dist/
+          # Cloudflare Pages has a 25 MiB per-file limit; the bundled web build is ~57 MiB.
+          rm -f docs/dist/jpostcode-web-bundle.js
+
+      - name: Copy jpostcode-data for Pages
+        run: |
+          rm -rf docs/data
+          mkdir -p docs/data
+          cp -r jpostcode-data/data/* docs/data/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy docs --project-name=jpostcode-js
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

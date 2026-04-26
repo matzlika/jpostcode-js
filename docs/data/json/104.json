@@ -1930,9 +1930,9 @@
     "prefecture_code": 13,
     "city": "中央区",
     "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "３丁目２−１７",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "２丁目２−１京橋エドグラン",
     "office_name": "東映　株式会社",
     "office_name_kana": "トウエイ カブシキガイシヤ"
   },
@@ -1961,32 +1961,6 @@
     "street": "１丁目２６番１号",
     "office_name": "セイコーホールディングス　株式会社",
     "office_name_kana": "セイコ-ホ-ルデイングス カブシキガイシヤ"
-  },
-  "8111": {
-    "postcode": "1048111",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６丁目８番７号交詢ビル",
-    "office_name": "廣告社　株式会社",
-    "office_name_kana": "コウコクシヤ カブシキガイシヤ"
-  },
-  "8112": {
-    "postcode": "1048112",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６−１８−２野村不動産銀座ビル",
-    "office_name": "独立行政法人　日本学生支援機構",
-    "office_name_kana": "ドクリツギヨウセイホウジン ニホンガクセイシエンキコウ"
   },
   "8114": {
     "postcode": "1048114",
@@ -2027,19 +2001,6 @@
     "office_name": "北野建設　株式会社　東京本社",
     "office_name_kana": "キタノケンセツ カブシキガイシヤ トウキヨウホンシヤ"
   },
-  "8117": {
-    "postcode": "1048117",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "１丁目９番７号",
-    "office_name": "大和自動車交通　株式會社",
-    "office_name_kana": "ダイワジドウシヤコウツウ カブシキカイシヤ"
-  },
   "8118": {
     "postcode": "1048118",
     "prefecture": "東京都",
@@ -2052,32 +2013,6 @@
     "street": "１丁目２６番１号アーバンネット銀座一丁目ビル",
     "office_name": "セイコーウオッチ　株式会社",
     "office_name_kana": "セイコ-ウオツチ カブシキガイシヤ"
-  },
-  "8122": {
-    "postcode": "1048122",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "２丁目１２−１８",
-    "office_name": "富士火災海上保険　株式会社",
-    "office_name_kana": "フジカサイカイジヨウホケン カブシキガイシヤ"
-  },
-  "8123": {
-    "postcode": "1048123",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "５丁目１４−１（銀座クイント）",
-    "office_name": "ＵＩＰ映画",
-    "office_name_kana": "ユ-.アイ.ピ-エイガ"
   },
   "8124": {
     "postcode": "1048124",
@@ -2170,32 +2105,6 @@
     "office_name": "株式会社　博品館",
     "office_name_kana": "カブシキガイシヤ ハクヒンカン"
   },
-  "8133": {
-    "postcode": "1048133",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "３丁目３−１８",
-    "office_name": "東京電力　株式会社　銀座支店",
-    "office_name_kana": "トウキヨウデンリヨク カブシキガイシヤ ギンザシテン"
-  },
-  "8134": {
-    "postcode": "1048134",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "７丁目１６−３",
-    "office_name": "リコーリース　株式会社",
-    "office_name_kana": "リコ-リ-ス カブシキガイシヤ"
-  },
   "8135": {
     "postcode": "1048135",
     "prefecture": "東京都",
@@ -2209,19 +2118,6 @@
     "office_name": "株式会社　日本香堂",
     "office_name_kana": "カブシキカイシヤ ニツポンコ-ド-"
   },
-  "8138": {
-    "postcode": "1048138",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "４丁目１４−１９第２カタヤマビル４Ｆ",
-    "office_name": "株式会社　ゼアリズ",
-    "office_name_kana": "カブシキガイシヤ ゼアリズ"
-  },
   "8139": {
     "postcode": "1048139",
     "prefecture": "東京都",
@@ -2234,19 +2130,6 @@
     "street": "３丁目９番１１号",
     "office_name": "株式会社　紙パルプ会館",
     "office_name_kana": "カブシキガイシヤ カミパルプカイカン"
-  },
-  "8142": {
-    "postcode": "1048142",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６−１８−２銀座ＭＴＲ１１階",
-    "office_name": "株式会社　ジャパン・エンターテイメント・ネットワーク",
-    "office_name_kana": "カブシキガイシヤ ジヤパン・エンタ-テイメント・ネツトワ-ク"
   },
   "8145": {
     "postcode": "1048145",
@@ -2300,58 +2183,6 @@
     "office_name": "株式会社　東京ソワール",
     "office_name_kana": "カブシキガイシヤ トウキヨウソワ-ル"
   },
-  "8151": {
-    "postcode": "1048151",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "５丁目１３番７号",
-    "office_name": "東京海上日動火災保険　株式会社",
-    "office_name_kana": "トウキヨウカイジヨウニチドウカサイホケン カブシキガイシヤ"
-  },
-  "8158": {
-    "postcode": "1048158",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "７丁目２−２２同和ビル",
-    "office_name": "共同ピーアール　株式会社",
-    "office_name_kana": "キヨウドウピ-ア-ル カブシキガイシヤ"
-  },
-  "8161": {
-    "postcode": "1048161",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "２丁目６番７号電通恒産第３ビル",
-    "office_name": "株式会社　電通名鉄コミュニケーションズ",
-    "office_name_kana": "カブシキガイシヤ デンツウメイテツコミユニケ-シヨンズ"
-  },
-  "8162": {
-    "postcode": "1048162",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６丁目２番１０号",
-    "office_name": "合同酒精　株式会社",
-    "office_name_kana": "ゴウドウシユセイ カブシキガイシヤ"
-  },
   "8165": {
     "postcode": "1048165",
     "prefecture": "東京都",
@@ -2364,32 +2195,6 @@
     "street": "６丁目１５−１",
     "office_name": "電源開発　株式会社",
     "office_name_kana": "デンゲンカイハツ カブシキガイシヤ"
-  },
-  "8167": {
-    "postcode": "1048167",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６丁目１７番２号（日産ビルネット館−２）",
-    "office_name": "日放　株式会社",
-    "office_name_kana": "ニツポウ カブシキガイシヤ"
-  },
-  "8168": {
-    "postcode": "1048168",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６丁目８−３尾張町ビル２階",
-    "office_name": "株式会社　近代映画社",
-    "office_name_kana": "カブシキガイシヤ キンダイエイガシヤ"
   },
   "8170": {
     "postcode": "1048170",
@@ -2442,19 +2247,6 @@
     "street": "８−１聖路加タワー１階・１６階",
     "office_name": "日本年金機構　中央年金事務所",
     "office_name_kana": "ニツポンネンキンキコウ チユウオウネンキンジムシヨ"
-  },
-  "8176": {
-    "postcode": "1048176",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "７丁目１３−２０",
-    "office_name": "株式会社　日本経済社",
-    "office_name_kana": "カブシキガイシヤ ニホンケイザイシヤ"
   },
   "8178": {
     "postcode": "1048178",
@@ -2521,32 +2313,6 @@
     "office_name": "株式会社　栄美通信",
     "office_name_kana": "カブシキガイシヤ エイビツウシン"
   },
-  "8205": {
-    "postcode": "1048205",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "６丁目２−１０",
-    "office_name": "福徳長酒類　株式会社",
-    "office_name_kana": "フクトクチヨウシユルイ カブシキガイシヤ"
-  },
-  "8206": {
-    "postcode": "1048206",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "７丁目２番２２号同和ビル５Ｆ",
-    "office_name": "共和ピー・アール　株式会社",
-    "office_name_kana": "キヨウワピ-・ア-ル カブシキガイシヤ"
-  },
   "8208": {
     "postcode": "1048208",
     "prefecture": "東京都",
@@ -2559,32 +2325,6 @@
     "street": "７丁目６−１５",
     "office_name": "株式会社　ノエビア",
     "office_name_kana": "カブシキガイシヤ ノエビア"
-  },
-  "8210": {
-    "postcode": "1048210",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "２丁目１６−７",
-    "office_name": "株式会社　電通パブリックリレーションズ",
-    "office_name_kana": "カブシキガイシヤ デンツウパブリツクリレ-シヨンズ"
-  },
-  "8211": {
-    "postcode": "1048211",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "銀座",
-    "town_kana": "ギンザ",
-    "street": "２丁目６−１",
-    "office_name": "中央宣興　株式会社",
-    "office_name_kana": "チユウオウセンコウ カブシキガイシヤ"
   },
   "8212": {
     "postcode": "1048212",
@@ -2645,9 +2385,9 @@
     "prefecture_code": 13,
     "city": "中央区",
     "city_kana": "チュウオウク",
-    "town": "新富",
-    "town_kana": "シントミ",
-    "street": "１−１９−２",
+    "town": "新川",
+    "town_kana": "シンカワ",
+    "street": "２−２８−７",
     "office_name": "株式会社　アカギ",
     "office_name_kana": "カブシキガイシヤ アカギ"
   },
@@ -2728,6 +2468,19 @@
     "street": "２−９−１１ＰＭＯ八丁堀新川",
     "office_name": "青山特殊鋼　株式会社",
     "office_name_kana": "アオヤマトクシユコウ カブシキガイシヤ"
+  },
+  "8263": {
+    "postcode": "1048263",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "新川",
+    "town_kana": "シンカワ",
+    "street": "二丁目２７番１号東京住友ツインビルディング東館",
+    "office_name": "ＭＵＦＧファイナンス＆リーシング　株式会社",
+    "office_name_kana": "エムユ-エフジ-フアイナンスアンドリ-シング カブシキガイシヤ"
   },
   "8266": {
     "postcode": "1048266",
@@ -2989,6 +2742,45 @@
     "office_name": "王子ネピア　株式会社",
     "office_name_kana": "オウジネピア カブシキガイシヤ"
   },
+  "8321": {
+    "postcode": "1048321",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−７−１",
+    "office_name": "コスモエネルギー開発　株式会社",
+    "office_name_kana": "コスモエネルギ-カイハツ カブシキガイシヤ"
+  },
+  "8322": {
+    "postcode": "1048322",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−７−１",
+    "office_name": "コスモ石油　株式会社",
+    "office_name_kana": "コスモセキユ カブシキガイシヤ"
+  },
+  "8323": {
+    "postcode": "1048323",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−７−１",
+    "office_name": "コスモ石油マーケティング　株式会社",
+    "office_name_kana": "コスモセキユマ-ケテイング カブシキガイシヤ"
+  },
   "8324": {
     "postcode": "1048324",
     "prefecture": "東京都",
@@ -3014,6 +2806,19 @@
     "street": "２丁目９−２第一ぬり彦ビル",
     "office_name": "株式会社　読売新聞社　事業局",
     "office_name_kana": "カブシキガイシヤ ヨミウリシンブンシヤ ジギヨウキヨク"
+  },
+  "8326": {
+    "postcode": "1048326",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−１−１",
+    "office_name": "三菱商事プラスチック　株式会社",
+    "office_name_kana": "ミツビシシヨウジプラスチツク カブシキガイシヤ"
   },
   "8328": {
     "postcode": "1048328",
@@ -3197,6 +3002,45 @@
     "office_name": "前澤工業　株式会社",
     "office_name_kana": "マエザワコウギヨウ カブシキガイシヤ"
   },
+  "8352": {
+    "postcode": "1048352",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−７−１",
+    "office_name": "コスモ石油ルブリカンツ　株式会社",
+    "office_name_kana": "コスモセキユルブリカンツ カブシキガイシヤ"
+  },
+  "8353": {
+    "postcode": "1048353",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−７−１",
+    "office_name": "コスモビジネスアソシエイツ　株式会社",
+    "office_name_kana": "コスモビジネスアソシエイツ カブシキガイシヤ"
+  },
+  "8355": {
+    "postcode": "1048355",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "１−７−１",
+    "office_name": "コスモエネルギーホールディングス　株式会社",
+    "office_name_kana": "コスモエネルギ-ホ-ルデイングス カブシキガイシヤ"
+  },
   "8356": {
     "postcode": "1048356",
     "prefecture": "東京都",
@@ -3209,19 +3053,6 @@
     "street": "１丁目１３番１号",
     "office_name": "大日本住友製薬　株式会社",
     "office_name_kana": "ダイニツポンスミトモセイヤク カブシキガイシヤ"
-  },
-  "8357": {
-    "postcode": "1048357",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "京橋",
-    "town_kana": "キョウバシ",
-    "street": "３丁目５−７",
-    "office_name": "株式会社　主婦と生活社",
-    "office_name_kana": "カブシキガイシヤ シユフトセイカツシヤ"
   },
   "8363": {
     "postcode": "1048363",
@@ -3249,6 +3080,19 @@
     "office_name": "日本冶金工業　株式会社",
     "office_name_kana": "ニツポンヤキンコウギヨウ カブシキガイシヤ"
   },
+  "8366": {
+    "postcode": "1048366",
+    "prefecture": "東京都",
+    "prefecture_kana": "トウキョウト",
+    "prefecture_code": 13,
+    "city": "中央区",
+    "city_kana": "チュウオウク",
+    "town": "京橋",
+    "town_kana": "キョウバシ",
+    "street": "２丁目２−１京橋エドグラン",
+    "office_name": "株式会社　ミキモト",
+    "office_name_kana": "カブシキガイシヤ ミキモト"
+  },
   "8370": {
     "postcode": "1048370",
     "prefecture": "東京都",
@@ -3271,9 +3115,9 @@
     "city_kana": "チュウオウク",
     "town": "京橋",
     "town_kana": "キョウバシ",
-    "street": "２丁目２−１",
-    "office_name": "東洋インキＳＣホールディングス　株式会社",
-    "office_name_kana": "トウヨウインキエスシ-ホ-ルデイングス カブシキガイシヤ"
+    "street": "二丁目二番一号",
+    "office_name": "ａｒｔｉｅｎｃｅ　株式会社",
+    "office_name_kana": "ア-テイエンス カブシキガイシヤ"
   },
   "8378": {
     "postcode": "1048378",
@@ -3451,9 +3295,9 @@
     "prefecture_code": 13,
     "city": "中央区",
     "city_kana": "チュウオウク",
-    "town": "築地",
-    "town_kana": "ツキジ",
-    "street": "２−５−３読売旅行本社ビル２階",
+    "town": "銀座",
+    "town_kana": "ギンザ",
+    "street": "２−３−１２−５階マロニエゲート銀座３",
     "office_name": "株式会社　旅行読売出版社",
     "office_name_kana": "カブシキガイシヤ リヨコウヨミウリシユツパンシヤ"
   },
@@ -3490,9 +3334,9 @@
     "prefecture_code": 13,
     "city": "中央区",
     "city_kana": "チュウオウク",
-    "town": "築地",
-    "town_kana": "ツキジ",
-    "street": "２丁目５−３",
+    "town": "銀座",
+    "town_kana": "ギンザ",
+    "street": "２−３−１２マロニエゲート銀座３",
     "office_name": "株式会社　読売旅行",
     "office_name_kana": "カブシキガイシヤ ヨミウリリヨコウ"
   },
@@ -3609,7 +3453,7 @@
     "city_kana": "チュウオウク",
     "town": "築地",
     "town_kana": "ツキジ",
-    "street": "５−３−２朝日新聞社新館９階",
+    "street": "５−３−２朝日新聞社新館１３階",
     "office_name": "株式会社　朝日学生新聞社",
     "office_name_kana": "カブシキガイシヤ アサヒガクセイシンブンシヤ"
   },
@@ -3664,19 +3508,6 @@
     "street": "３丁目１１−６",
     "office_name": "株式会社　サンギ",
     "office_name_kana": "カブシキガイシヤ サンギ"
-  },
-  "8442": {
-    "postcode": "1048442",
-    "prefecture": "東京都",
-    "prefecture_kana": "トウキョウト",
-    "prefecture_code": 13,
-    "city": "中央区",
-    "city_kana": "チュウオウク",
-    "town": "築地",
-    "town_kana": "ツキジ",
-    "street": "３丁目１６番９号築地室町ビル",
-    "office_name": "株式会社　三井住友銀行　債権ビジネス事務センター",
-    "office_name_kana": "カブシキガイシヤ ミツイスミトモギンコウ サイケンビジネスジムセンタ-"
   },
   "8443": {
     "postcode": "1048443",

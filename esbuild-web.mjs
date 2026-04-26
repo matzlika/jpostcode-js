@@ -253,10 +253,6 @@ await esbuild.build({
   process.exit(1);
 }).then(() => console.log("done web ajax build"));
 
-// docs用にもコピー
-fs.copyFileSync('dist/jpostcode-web.js', 'docs/jpostcode-web.js');
-fs.copyFileSync('dist/jpostcode-web-bundle.js', 'docs/jpostcode-web-bundle.js');
-
 // 一時ファイルを削除
 fs.unlinkSync('temp-web-bundle.ts');
 fs.unlinkSync('temp-web-ajax.ts');

@@ -3212,6 +3212,19 @@
     "office_name": "イトーヨーカ堂　相模原ＩＤＣ",
     "office_name_kana": "イト-ヨ-カドウ サガミハラアイデイ-シ-"
   },
+  "5266": {
+    "postcode": "2525266",
+    "prefecture": "神奈川県",
+    "prefecture_kana": "カナガワケン",
+    "prefecture_code": 14,
+    "city": "相模原市中央区",
+    "city_kana": "サガミハラシチュウオウク",
+    "town": "淵野辺",
+    "town_kana": "フチノベ",
+    "street": "五丁目１１番１０号",
+    "office_name": "順通貿易　株式会社",
+    "office_name_kana": "ジユンツウボウエキ カブシキカイシヤ"
+  },
   "5269": {
     "postcode": "2525269",
     "prefecture": "神奈川県",
@@ -3533,9 +3546,9 @@
     "city_kana": "ザマシ",
     "town": "相武台",
     "town_kana": "ソウブダイ",
-    "street": "２丁目２１５",
-    "office_name": "日本電産トーソク　株式会社",
-    "office_name_kana": "ニホンデンサント-ソク カブシキガイシヤ"
+    "street": "２−２４−１",
+    "office_name": "ニデックパワートレインシステムズ　株式会社",
+    "office_name_kana": "ニデツクパワ-トレインシステムズ カブシキカイシヤ"
   },
   "8572": {
     "postcode": "2528572",
@@ -3549,6 +3562,19 @@
     "street": "２丁目１０番４号",
     "office_name": "イオンモール座間",
     "office_name_kana": "イオンモ-ルザマ"
+  },
+  "8583": {
+    "postcode": "2528583",
+    "prefecture": "神奈川県",
+    "prefecture_kana": "カナガワケン",
+    "prefecture_code": 14,
+    "city": "座間市",
+    "city_kana": "ザマシ",
+    "town": "東原",
+    "town_kana": "ヒガシハラ",
+    "street": "５丁目１−８３",
+    "office_name": "森永乳業　株式会社　研究・情報センター",
+    "office_name_kana": "モリナガニユウギヨウ カブシキカイシヤ ケンキユウ・ジヨウホウセンタ-"
   },
   "8585": {
     "postcode": "2528585",

@@ -1613,8 +1613,8 @@
     "office_name": "千葉労働局　総務部・労働基準部・職業安定部・雇用均等室",
     "office_name_kana": "チバロウドウキヨク ソウムブ・ロウドウキジユンブ・シヨクギヨウアンテイブ・コヨウキントウシツ"
   },
-  "8613": {
-    "postcode": "2608613",
+  "8614": {
+    "postcode": "2608614",
     "prefecture": "千葉県",
     "prefecture_kana": "チバケン",
     "prefecture_code": 12,
@@ -1622,9 +1622,9 @@
     "city_kana": "チバシチュウオウク",
     "town": "中央",
     "town_kana": "チュウオウ",
-    "street": "３丁目１０−６北野京葉ビル２Ｆ",
-    "office_name": "株式会社　帝国データバンク　千葉支店",
-    "office_name_kana": "カブシキガイシヤ テイコクデ-タバンク チバシテン"
+    "street": "４丁目１３−２３",
+    "office_name": "千葉県企業局",
+    "office_name_kana": "チバケンキギヨウキヨク"
   },
   "8618": {
     "postcode": "2608618",
@@ -1742,19 +1742,6 @@
     "street": "４丁目１３−１０千葉県教育会館６Ｆ",
     "office_name": "千葉県学校生活協同組合",
     "office_name_kana": "チバケンガツコウセイカツキヨウドウクミアイ"
-  },
-  "8629": {
-    "postcode": "2608629",
-    "prefecture": "千葉県",
-    "prefecture_kana": "チバケン",
-    "prefecture_code": 12,
-    "city": "千葉市中央区",
-    "city_kana": "チバシチュウオウク",
-    "town": "市場町",
-    "town_kana": "イチバチョウ",
-    "street": "１番１号",
-    "office_name": "財団法人　千葉県公立学校教職員互助会",
-    "office_name_kana": "ザイダンホウジン チバケンコウリツガツコウキヨウシヨクインゴジヨカイ"
   },
   "8631": {
     "postcode": "2608631",
@@ -1919,9 +1906,9 @@
     "prefecture_code": 12,
     "city": "千葉市中央区",
     "city_kana": "チバシチュウオウク",
-    "town": "青葉町",
-    "town_kana": "アオバチョウ",
-    "street": "９７７−１青葉の森公園芸術文化ホール内",
+    "town": "市場町",
+    "town_kana": "イチバチョウ",
+    "street": "１１番２号",
     "office_name": "公益財団法人　千葉県文化振興財団",
     "office_name_kana": "コウエキザイダンホウジン チバケンブンカシンコウザイダン"
   },

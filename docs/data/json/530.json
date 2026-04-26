@@ -2445,6 +2445,19 @@
     "office_name": "株式会社　阪急交通社　トラピックス",
     "office_name_kana": "カブシキガイシヤ ハンキユウコウツウシヤ トラピツクス"
   },
+  "8373": {
+    "postcode": "5308373",
+    "prefecture": "大阪府",
+    "prefecture_kana": "オオサカフ",
+    "prefecture_code": 27,
+    "city": "大阪市北区",
+    "city_kana": "オオサカシキタク",
+    "town": "梅田",
+    "town_kana": "ウメダ",
+    "street": "３−１−１（１０Ｆ〜１６Ｆ）",
+    "office_name": "ＪＲ西日本ＳＣ開発　株式会社（ＬＵＣＵＡ　ＳＯＵＴＨ（ルクア　サウス））",
+    "office_name_kana": "ジエイア-ルニシニホンエスシ-カイハツ カブシキガイシヤ(ルクアサウス)"
+  },
   "8383": {
     "postcode": "5308383",
     "prefecture": "大阪府",
@@ -2587,6 +2600,19 @@
     "street": "３丁目１−３",
     "office_name": "伊藤忠商事　株式会社",
     "office_name_kana": "イトウチユウシヨウジ カブシキガイシヤ"
+  },
+  "8459": {
+    "postcode": "5308459",
+    "prefecture": "大阪府",
+    "prefecture_kana": "オオサカフ",
+    "prefecture_code": 27,
+    "city": "大阪市北区",
+    "city_kana": "オオサカシキタク",
+    "town": "大深町",
+    "town_kana": "オオフカチョウ",
+    "street": "グラングリーン大阪パークタワー１４階",
+    "office_name": "コクヨ　株式会社",
+    "office_name_kana": "コクヨ カブシキガイシヤ"
   },
   "8475": {
     "postcode": "5308475",
