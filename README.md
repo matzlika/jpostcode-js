@@ -181,7 +181,9 @@ npx http-server docs -p 8000
 
 ## ライセンス
 
-このプロジェクトはMITライセンスの下でライセンスされています。
+このプロジェクトは MIT ライセンスの下で配布されています。詳細は [LICENSE](LICENSE) を参照してください。
+
+本プロジェクトは [jpostcode-data](https://github.com/kufu/jpostcode-data) (Copyright 2023 SmartHR, Inc., MIT License) のデータを同梱しています。サードパーティ著作権表示については [NOTICE](NOTICE) を参照してください。
 
 ---
 

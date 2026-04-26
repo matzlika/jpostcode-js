@@ -181,4 +181,6 @@ Then open `http://localhost:8000` in your browser.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+This project bundles data from [jpostcode-data](https://github.com/kufu/jpostcode-data) (Copyright 2023 SmartHR, Inc., MIT License). See [NOTICE](NOTICE) for third-party copyright notices.

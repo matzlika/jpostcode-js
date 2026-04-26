@@ -2,6 +2,17 @@ import * as esbuild from 'esbuild'
 import * as fs from "node:fs";
 import * as path from "node:path";
 
+const licenseBanner = `/*!
+ * jpostcode-js
+ * Copyright (c) 2026 Matzlika Co., Ltd.
+ * Released under the MIT License.
+ *
+ * Includes postal code data from jpostcode-data
+ * (https://github.com/kufu/jpostcode-data)
+ * Copyright 2023 SmartHR, Inc.
+ * Released under the MIT License.
+ */`;
+
 // Web版用のソースファイルを作成
 const webBundleSource = `
 import * as fs from 'fs';
@@ -218,7 +229,8 @@ await esbuild.build({
   minify: true,
   sourcemap: false,
   format: "iife",
-  globalName: "JpostcodeBundle"
+  globalName: "JpostcodeBundle",
+  banner: { js: licenseBanner }
 }).catch((e) => {
   console.log(e);
   process.exit(1);
@@ -234,7 +246,8 @@ await esbuild.build({
   minify: true,
   sourcemap: false,
   format: "iife",
-  globalName: "JpostcodeWeb"
+  globalName: "JpostcodeWeb",
+  banner: { js: licenseBanner }
 }).catch((e) => {
   console.log(e);
   process.exit(1);
