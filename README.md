@@ -176,13 +176,6 @@ npm test
 
 ライブデモは以下で公開されています: https://matzlika.github.io/jpostcode-js/
 
-### GitHub Pagesの設定
-
-1. リポジトリのSettingsタブに移動
-2. 左サイドバーの"Pages"に移動
-3. "Source"で"GitHub Actions"を選択
-4. mainブランチにプッシュすると自動的にデプロイされます
-
 ### ローカル開発
 
 デモサイトをローカルで実行するには:
@@ -191,8 +184,8 @@ npm test
 # まずプロジェクトをビルド
 npm run build
 
-# データファイルへのシンボリックリンクを作成（まだ作成していない場合）
-cd docs && ln -s ../jpostcode-data/data data && cd ..
+# ビルド成果物を docs/dist/ に配置（index.html が参照する）
+mkdir -p docs/dist && cp -r dist/* docs/dist/
 
 # 静的ファイルサーバーでdocsディレクトリを配信
 # 例: Pythonを使用する場合

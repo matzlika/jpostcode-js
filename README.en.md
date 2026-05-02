@@ -176,13 +176,6 @@ This project includes a GitHub Pages demo site that showcases the library's func
 
 Visit the live demo at: https://matzlika.github.io/jpostcode-js/
 
-### Setting up GitHub Pages
-
-1. Go to your repository's Settings tab
-2. Navigate to "Pages" in the left sidebar
-3. Under "Source", select "GitHub Actions"
-4. The site will be automatically deployed when you push to the main branch
-
 ### Local Development
 
 To run the demo site locally:
@@ -191,8 +184,8 @@ To run the demo site locally:
 # Build the project first
 npm run build
 
-# Create symbolic link to data files (if not already created)
-cd docs && ln -s ../jpostcode-data/data data && cd ..
+# Place build artifacts under docs/dist/ (referenced by index.html)
+mkdir -p docs/dist && cp -r dist/* docs/dist/
 
 # Serve the docs directory with any static file server
 # For example, using Python:
