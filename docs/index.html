@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jpostcode - 日本の郵便番号検索ライブラリ</title>
-    <meta name="description" content="日本の郵便番号から都道府県・市区町村・町域・カナを検索できる JavaScript / TypeScript ライブラリ。月次自動更新のデータと Cloudflare CDN 配信に対応。">
-    <meta name="keywords" content="郵便番号,住所検索,日本,都道府県,市区町村,町域,カナ,jpostcode,Japanese addresses,postal code,address lookup,JavaScript,TypeScript">
+    <title>Jpostcode - 郵便番号から住所を自動入力する JavaScript ライブラリ</title>
+    <meta name="description" content="郵便番号から日本の住所を検索する JavaScript / TypeScript ライブラリ。フォームの住所自動入力に最適。月次自動更新・Cloudflare CDN 配信・API サーバー不要。">
+    <meta name="keywords" content="郵便番号,住所自動入力,フォーム自動入力,住所検索,日本,都道府県,市区町村,町域,カナ,jpostcode,Japanese addresses,postal code,address autofill,JavaScript,TypeScript">
     <meta name="author" content="Matzlika Co., Ltd.">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#1a202c">
     <link rel="canonical" href="https://jpostcode-js.pages.dev/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jpostcode">
-    <meta property="og:title" content="Jpostcode - 日本の郵便番号検索ライブラリ">
-    <meta property="og:description" content="日本の郵便番号から住所を検索する JavaScript / TypeScript ライブラリ。npm で提供、Cloudflare CDN 経由でも利用可能。">
+    <meta property="og:title" content="Jpostcode - 郵便番号から住所を自動入力する JavaScript ライブラリ">
+    <meta property="og:description" content="フォームの住所自動入力に最適。npm / Cloudflare CDN で配信、月次自動更新。API サーバー不要でブラウザだけで動作。">
     <meta property="og:url" content="https://jpostcode-js.pages.dev/">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Jpostcode - 日本の郵便番号検索ライブラリ">
-    <meta name="twitter:description" content="日本の郵便番号から住所を検索する JavaScript / TypeScript ライブラリ。月次自動更新データ・Cloudflare CDN 対応。">
+    <meta name="twitter:title" content="Jpostcode - 郵便番号から住所を自動入力する JavaScript ライブラリ">
+    <meta name="twitter:description" content="フォームの住所自動入力に最適。月次自動更新データ・Cloudflare CDN 対応・API サーバー不要。">
     <link rel="alternate" type="application/json" href="https://registry.npmjs.org/jpostcode" title="npm package metadata">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         * {
             margin: 0;
@@ -30,55 +31,143 @@
             font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
+            background-color: #1a202c;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)),
+                linear-gradient(135deg,
+                    #c89052 0%,
+                    #e7b677 22%,
+                    #f5d590 38%,
+                    #e7b677 55%,
+                    #c89052 72%,
+                    #e7b677 88%,
+                    #f5d590 100%
+                );
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
+            background: transparent;
+            color: #ebae2b;
+            padding: 3rem 0 2.5rem;
             text-align: center;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .badges {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badges img {
+            height: 20px;
         }
 
         main {
             padding: 3rem 0;
         }
 
-        .demo-section {
-            background: white;
+        section {
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            color: #e2e8f0;
         }
 
-        .demo-section h2 {
-            color: #667eea;
+        section h2 {
+            color: #f5d590;
+            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+        }
+
+        section .section-lead {
+            color: #cbd5e0;
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+        }
+
+        .autofill-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr 2fr;
+            gap: 0.75rem;
+        }
+
+        .autofill-grid label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #f7fafc;
+            margin-bottom: 0.3rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.7rem 0.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-family: inherit;
+            background: rgba(0, 0, 0, 0.3);
+            color: #f7fafc;
+        }
+
+        input[type="text"]::placeholder {
+            color: #718096;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ebae2b;
+        }
+
+        input[readonly] {
+            background: rgba(0, 0, 0, 0.45);
+            color: #f7fafc;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .autofill-hint {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #cbd5e0;
+        }
+
+        .autofill-hint .filled {
+            color: #ebae2b;
+            font-weight: bold;
         }
 
         .search-form {
             display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
+            align-items: end;
         }
 
         .input-group {
@@ -86,173 +175,185 @@
             min-width: 200px;
         }
 
-        label {
+        .input-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             font-weight: bold;
-            color: #555;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #667eea;
+            color: #f7fafc;
         }
 
         button {
-            background: #667eea;
+            background: #1a202c;
             color: white;
             border: none;
-            padding: 0.8rem 2rem;
+            padding: 0.75rem 2rem;
             border-radius: 5px;
             font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s;
-            align-self: end;
+            transition: background-color 0.2s;
         }
 
         button:hover {
-            background: #5a6fd8;
+            background: #000000;
         }
 
         .result {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 5px;
-            border-left: 4px solid #667eea;
+            margin-top: 1.5rem;
         }
 
         .address-card {
-            background: white;
-            padding: 1.5rem;
-            margin: 1rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.25rem;
+            margin: 0.75rem 0;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #ebae2b;
         }
 
         .address-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
+            color: #ebae2b;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
         }
 
         .address-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.5rem 1.5rem;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            gap: 0.5rem;
+            padding: 0.35rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .info-label {
             font-weight: bold;
-            color: #555;
+            color: #cbd5e0;
+            white-space: nowrap;
         }
 
         .info-value {
-            color: #333;
+            color: #f7fafc;
+            text-align: right;
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
             text-align: center;
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.4rem;
+            margin-bottom: 0.75rem;
+            color: #ebae2b;
         }
 
         .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
+            color: #ebae2b;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
         }
 
-        .installation {
-            background: #2d3748;
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #cbd5e0;
         }
 
-        .installation h2 {
-            color: white;
-            margin-bottom: 1rem;
+        .feature-card p code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: #f5d590;
         }
 
-        .code-block {
-            background: #1a202c;
-            padding: 1rem;
-            border-radius: 5px;
-            margin: 1rem 0;
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            margin: 0.75rem 0 1.5rem;
             overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .code-block code {
-            color: #68d391;
-            font-family: 'Courier New', monospace;
+        pre code {
+            color: #e2e8f0;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
         }
 
-        footer {
-            background: #2d3748;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+        pre code .comment { color: #718096; }
+        pre code .string  { color: #9ae6b4; }
+        pre code .keyword { color: #f6ad55; }
+        pre code .ident   { color: #90cdf4; }
+
+        .usage h3 {
+            color: #ebae2b;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .usage h3:first-of-type {
+            margin-top: 0;
         }
 
         .error {
-            color: #e53e3e;
+            color: #c53030;
             background: #fed7d7;
-            padding: 1rem;
+            padding: 0.75rem 1rem;
             border-radius: 5px;
-            margin: 1rem 0;
+            margin-top: 1rem;
+            font-size: 0.95rem;
         }
 
         .no-result {
-            color: #d69e2e;
-            background: #faf089;
-            padding: 1rem;
+            color: #b7791f;
+            background: #fefcbf;
+            padding: 0.75rem 1rem;
             border-radius: 5px;
-            margin: 1rem 0;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 1rem;
+        }
+
+        footer a {
+            color: #cbd5e0;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin: 0.4rem 0;
+            font-size: 0.92rem;
         }
 
         @media (max-width: 768px) {
-            .search-form {
-                flex-direction: column;
-            }
-            
-            .address-info {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
+            h1 { font-size: 2rem; }
+            .autofill-grid { grid-template-columns: 1fr; }
+            .search-form { flex-direction: column; align-items: stretch; }
+            .info-item { flex-direction: column; }
+            .info-value { text-align: left; }
         }
     </style>
 </head>
@@ -260,16 +361,48 @@
     <header>
         <div class="container">
             <h1>Jpostcode</h1>
-            <p class="subtitle">日本の郵便番号から住所を検索するライブラリ</p>
+            <p class="subtitle">郵便番号から日本の住所を取得する JavaScript ライブラリ。<br>フォームの住所自動入力に最適、API サーバー不要でブラウザだけで動きます。</p>
+            <div class="badges">
+                <a href="https://www.npmjs.com/package/jpostcode"><img src="https://img.shields.io/npm/v/jpostcode.svg" alt="npm version"></a>
+                <a href="https://www.npmjs.com/package/jpostcode"><img src="https://img.shields.io/npm/dm/jpostcode.svg" alt="npm downloads"></a>
+                <a href="https://github.com/matzlika/jpostcode-js/actions/workflows/auto-publish.yml"><img src="https://github.com/matzlika/jpostcode-js/actions/workflows/auto-publish.yml/badge.svg" alt="Auto Publish"></a>
+                <a href="https://github.com/matzlika/jpostcode-js"><img src="https://img.shields.io/github/stars/matzlika/jpostcode-js?style=social" alt="GitHub stars"></a>
+            </div>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <section class="demo-section">
-                <h2>🔍 郵便番号検索デモ</h2>
-                <p>郵便番号を入力して住所を検索してみてください。ハイフンありなしどちらでも検索できます。</p>
-                
+
+            <section>
+                <h2><i class="fa-solid fa-pen-to-square"></i> フォーム住所自動入力デモ</h2>
+                <p class="section-lead">郵便番号欄に 7 桁入れると、住所が自動で埋まります。試してみてください。</p>
+
+                <div class="autofill-grid">
+                    <div>
+                        <label for="autofillZip">郵便番号（7桁）</label>
+                        <input type="text" id="autofillZip" placeholder="例: 1000001" maxlength="8" value="1000001">
+                    </div>
+                    <div>
+                        <label for="autofillPref">都道府県</label>
+                        <input type="text" id="autofillPref" readonly>
+                    </div>
+                    <div>
+                        <label for="autofillCity">市区町村</label>
+                        <input type="text" id="autofillCity" readonly>
+                    </div>
+                    <div>
+                        <label for="autofillTown">町域</label>
+                        <input type="text" id="autofillTown" readonly>
+                    </div>
+                </div>
+                <p id="autofillHint" class="autofill-hint">郵便番号を 7 桁入力すると自動で住所が入ります。</p>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-magnifying-glass"></i> 詳細検索デモ</h2>
+                <p class="section-lead">カナ表記・都道府県コードなど、すべてのフィールドを確認できます。1 つの郵便番号に複数住所が紐づく場合は全件表示します。</p>
+
                 <div class="search-form">
                     <div class="input-group">
                         <label for="postalCode">郵便番号</label>
@@ -281,146 +414,214 @@
                 <div id="searchResult"></div>
             </section>
 
-            <section class="installation">
-                <div class="container">
-                    <h2>📦 インストール</h2>
-                    <p>npmを使用してライブラリをインストールできます：</p>
-                    <div class="code-block">
-                        <code>npm install jpostcode</code>
+            <section>
+                <h2><i class="fa-solid fa-list-check"></i> 特徴</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                        <h3>毎月自動更新</h3>
+                        <p>日本郵便の最新データを月次で取り込み、新バージョンを自動公開。バージョン番号 <code>MAJOR.MINOR.YYYYMM</code> で取得時期が一目でわかります。</p>
                     </div>
-
-                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">使用例 (JavaScript)</h3>
-                    <div class="code-block">
-                        <code>
-const { Jpostcode } = require('jpostcode');<br><br>
-const addresses = Jpostcode.find('1000001');<br>
-if (addresses.length > 0) {<br>
-&nbsp;&nbsp;for (const address of addresses) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`都道府県: ${address.prefecture}`);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`市区町村: ${address.city}`);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`町域: ${address.town}`);<br>
-&nbsp;&nbsp;}<br>
-}
-                        </code>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+                        <h3>公式 CDN あり</h3>
+                        <p>ライブラリ本体と郵便番号データを Cloudflare Pages から配信。npm を使わずコピペで導入できます。</p>
                     </div>
-
-                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">使用例 (TypeScript)</h3>
-                    <div class="code-block">
-                        <code>
-import { Address, Jpostcode } from 'jpostcode';<br><br>
-const addresses: Address[] = Jpostcode.find('1000001');<br>
-if (addresses.length > 0) {<br>
-&nbsp;&nbsp;for (const address of addresses) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`都道府県: ${address.prefecture}`);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`市区町村: ${address.city}`);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;console.log(`町域: ${address.town}`);<br>
-&nbsp;&nbsp;}<br>
-}
-                        </code>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <h3>API サーバー不要</h3>
+                        <p>サーバーサイドの実装やプロキシは不要。ブラウザだけで完結します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                        <h3>TypeScript 対応</h3>
+                        <p>Node / ESM / ブラウザのすべてで使用可能。完全な型定義付き。</p>
                     </div>
                 </div>
             </section>
+
+            <section class="usage">
+                <h2><i class="fa-solid fa-cube"></i> 使い方</h2>
+
+                <h3>ブラウザで使う（CDN）</h3>
+                <pre><code>&lt;script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
+  Jpostcode.find('1000001').then(addresses =&gt; {
+    console.log(addresses[0]?.prefecture); <span class="comment">// 東京都</span>
+  });
+&lt;/script&gt;</code></pre>
+
+                <h3>フォームで住所を自動入力する</h3>
+                <pre><code>&lt;input id="zip" placeholder="郵便番号"&gt;
+&lt;input id="prefecture"&gt;
+&lt;input id="city"&gt;
+&lt;input id="town"&gt;
+
+&lt;script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
+  document.getElementById('zip').addEventListener('input', async (e) =&gt; {
+    const zip = e.target.value.replace(/[^0-9]/g, '');
+    if (zip.length !== 7) return;
+
+    const [address] = await Jpostcode.find(zip);
+    if (!address) return;
+
+    document.getElementById('prefecture').value = address.prefecture;
+    document.getElementById('city').value = address.city;
+    document.getElementById('town').value = address.town;
+  });
+&lt;/script&gt;</code></pre>
+
+                <h3>npm でインストール</h3>
+                <pre><code>npm install jpostcode</code></pre>
+
+                <h3>Node.js / TypeScript</h3>
+                <pre><code>import { Address, Jpostcode } from 'jpostcode';
+
+const addresses: Address[] = Jpostcode.find('1000001');
+console.log(addresses[0]?.prefecture); <span class="comment">// 東京都</span></code></pre>
+
+                <p style="margin-top: 1rem; color: #cbd5e0; font-size: 0.9rem;">
+                    詳しい使い方は <a href="https://github.com/matzlika/jpostcode-js#readme" style="color: #ebae2b;">GitHub の README</a> を参照してください。
+                </p>
+            </section>
+
         </div>
     </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2026 Matzlika Co., Ltd. MIT License.</p>
-            <p><a href="https://www.npmjs.com/package/jpostcode" style="color: #68d391;">npm</a> | <a href="https://github.com/matzlika/jpostcode-js" style="color: #68d391;">GitHub</a></p>
-            <p>このプロジェクトは <a href="https://github.com/kufu/jpostcode-data" style="color: #68d391;">jpostcode-data</a> のデータを使用しています。</p>
+            <p><a href="https://www.npmjs.com/package/jpostcode">npm</a> | <a href="https://github.com/matzlika/jpostcode-js">GitHub</a></p>
+            <p>このプロジェクトは <a href="https://github.com/kufu/jpostcode-data">jpostcode-data</a> のデータを使用しています。</p>
         </div>
     </footer>
 
     <script src="./dist/jpostcode-web.js"></script>
     <script>
+        // --- フォーム自動入力デモ ---
+        const autofillZip   = document.getElementById('autofillZip');
+        const autofillPref  = document.getElementById('autofillPref');
+        const autofillCity  = document.getElementById('autofillCity');
+        const autofillTown  = document.getElementById('autofillTown');
+        const autofillHint  = document.getElementById('autofillHint');
+
+        async function runAutofill() {
+            const zip = autofillZip.value.replace(/[^0-9]/g, '');
+
+            if (zip.length !== 7) {
+                autofillPref.value = '';
+                autofillCity.value = '';
+                autofillTown.value = '';
+                autofillHint.innerHTML = '郵便番号を 7 桁入力すると自動で住所が入ります。';
+                return;
+            }
+
+            try {
+                const [address] = await Jpostcode.find(zip);
+                if (!address) {
+                    autofillPref.value = '';
+                    autofillCity.value = '';
+                    autofillTown.value = '';
+                    autofillHint.innerHTML = `郵便番号「${zip}」に対応する住所が見つかりませんでした。`;
+                    return;
+                }
+                autofillPref.value = address.prefecture;
+                autofillCity.value = address.city;
+                autofillTown.value = address.town || '';
+                autofillHint.innerHTML = '<span class="filled"><i class="fa-solid fa-check"></i> 自動で入力しました</span>';
+            } catch (err) {
+                autofillHint.innerHTML = `エラー: ${err.message}`;
+            }
+        }
+
+        autofillZip.addEventListener('input', runAutofill);
+
+        // --- 詳細検索デモ ---
         async function searchAddress() {
             const postalCode = document.getElementById('postalCode').value.trim();
             const resultDiv = document.getElementById('searchResult');
-            
+
             if (!postalCode) {
                 resultDiv.innerHTML = '<div class="error">郵便番号を入力してください。</div>';
                 return;
             }
 
-            // 郵便番号の正規化（ハイフンを除去）
-            const normalizedCode = postalCode.replace('-', '');
-            
+            const normalizedCode = postalCode.replace(/-/g, '');
+
             if (!/^\d{7}$/.test(normalizedCode)) {
                 resultDiv.innerHTML = '<div class="error">正しい郵便番号を入力してください（7桁の数字）。</div>';
                 return;
             }
 
-            // 検索中の表示
-            resultDiv.innerHTML = '<div style="text-align: center; padding: 2rem;">🔍 検索中...</div>';
+            resultDiv.innerHTML = '<div style="text-align: center; padding: 1rem; color: #cbd5e0;"><i class="fa-solid fa-magnifying-glass"></i> 検索中...</div>';
 
             try {
-                // 実際のライブラリを使用して検索
                 const addresses = await Jpostcode.find(normalizedCode);
-                
+
                 if (!addresses || addresses.length === 0) {
                     resultDiv.innerHTML = `
                         <div class="no-result">
-                            郵便番号「${postalCode}」に対応する住所が見つかりませんでした。<br>
-                            <small>※ 存在しない郵便番号か、データに含まれていない可能性があります。</small>
+                            郵便番号「${postalCode}」に対応する住所が見つかりませんでした。
                         </div>
                     `;
                     return;
                 }
 
-                let resultHTML = '<div class="result"><h3>検索結果</h3>';
-                
+                let resultHTML = '<div class="result">';
                 addresses.forEach((address, index) => {
                     resultHTML += `
                         <div class="address-card">
-                            <h3>住所情報 ${addresses.length > 1 ? `(${index + 1}/${addresses.length})` : ''}</h3>
+                            <h3>${addresses.length > 1 ? `候補 ${index + 1}/${addresses.length}` : '住所情報'}</h3>
                             <div class="address-info">
                                 <div class="info-item">
-                                    <span class="info-label">郵便番号:</span>
+                                    <span class="info-label">郵便番号</span>
                                     <span class="info-value">${address.zipCode}</span>
                                 </div>
                                 <div class="info-item">
-                                    <span class="info-label">都道府県:</span>
+                                    <span class="info-label">都道府県</span>
                                     <span class="info-value">${address.prefecture} (${address.prefectureKana})</span>
                                 </div>
                                 <div class="info-item">
-                                    <span class="info-label">市区町村:</span>
+                                    <span class="info-label">市区町村</span>
                                     <span class="info-value">${address.city} (${address.cityKana})</span>
                                 </div>
                                 <div class="info-item">
-                                    <span class="info-label">町域:</span>
+                                    <span class="info-label">町域</span>
                                     <span class="info-value">${address.town || '（なし）'} ${address.townKana ? `(${address.townKana})` : ''}</span>
                                 </div>
                                 <div class="info-item">
-                                    <span class="info-label">都道府県コード:</span>
+                                    <span class="info-label">都道府県コード</span>
                                     <span class="info-value">${address.prefectureCode}</span>
                                 </div>
                             </div>
                         </div>
                     `;
                 });
-                
                 resultHTML += '</div>';
                 resultDiv.innerHTML = resultHTML;
             } catch (error) {
                 console.error('検索エラー:', error);
                 resultDiv.innerHTML = `
                     <div class="error">
-                        検索中にエラーが発生しました。しばらく時間をおいて再度お試しください。<br>
-                        <small>エラー詳細: ${error.message}</small>
+                        検索中にエラーが発生しました。<br>
+                        <small>${error.message}</small>
                     </div>
                 `;
             }
         }
 
-        // Enterキーでの検索
         document.getElementById('postalCode').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchAddress();
-            }
+            if (e.key === 'Enter') searchAddress();
         });
 
-        // ページ読み込み時にサンプル検索を実行
+        // --- 初期化 ---
         window.addEventListener('load', function() {
+            runAutofill();
             document.getElementById('postalCode').value = '100-0001';
             searchAddress();
         });

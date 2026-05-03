@@ -1,208 +1,150 @@
 # Jpostcode
 
-Jpostcodeは、郵便番号から日本の住所を検索するためのライブラリです。都道府県、市区町村、町域名を、漢字とカナの両方で詳細に提供します。
+[![npm version](https://img.shields.io/npm/v/jpostcode.svg)](https://www.npmjs.com/package/jpostcode)
+[![npm downloads](https://img.shields.io/npm/dm/jpostcode.svg)](https://www.npmjs.com/package/jpostcode)
+[![Auto Publish](https://github.com/matzlika/jpostcode-js/actions/workflows/auto-publish.yml/badge.svg)](https://github.com/matzlika/jpostcode-js/actions/workflows/auto-publish.yml)
+[![license](https://img.shields.io/npm/l/jpostcode.svg)](LICENSE)
 
-> 🗓 **毎月自動更新**: 上流の [jpostcode-data](https://github.com/kufu/jpostcode-data) が日本郵便の最新データを取り込むたびに、本ライブラリも自動的に新バージョンを npm に公開します。郵便番号データを最新に保つために、依存関係を更新するだけで済みます。
+郵便番号から日本の住所を検索する JavaScript ライブラリです。フォームの住所自動入力など、外部 API を呼ばずにブラウザや Node.js だけで完結します。
 
-## インストール
+## 特徴
 
-npmを使用してライブラリをインストールします:
+- 🔄 **毎月自動更新** — 上流の [jpostcode-data](https://github.com/kufu/jpostcode-data) の更新を検知して新バージョンを npm に自動公開（バージョン `MAJOR.MINOR.YYYYMM`）
+- 🌐 **公式 CDN あり** — Cloudflare Pages からライブラリ本体と郵便番号データを配信
+- ⚡ **API サーバー不要** — ブラウザだけで完結
+- 🧩 **TypeScript 対応** — 完全な型定義付き
+- 📦 **Node / ESM / ブラウザ対応** — どの環境でも使える
+
+## クイックスタート（ブラウザ + CDN）
+
+コピペで動きます。
+
+```html
+<script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"></script>
+<script>
+  Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
+  Jpostcode.find('1000001').then(addresses => {
+    console.log(addresses[0]?.prefecture); // 東京都
+  });
+</script>
+```
+
+ライブラリ本体・郵便番号データともに [Cloudflare Pages](https://jpostcode-js.pages.dev/) から配信しています。
+
+- 上流データの月次更新を反映して自動再配信
+- 東京を含む Cloudflare エッジから低レイテンシで配信
+- JSON データには `s-maxage=2592000`（エッジ 30 日）/ `max-age=86400`（ブラウザ 1 日）のキャッシュヘッダ
+
+## フォーム住所自動入力の例
+
+7 桁の郵便番号が入力されたら、都道府県・市区町村・町域を自動で埋める例です。
+
+```html
+<input id="zip" placeholder="郵便番号（例: 1000001）">
+<input id="prefecture" placeholder="都道府県">
+<input id="city" placeholder="市区町村">
+<input id="town" placeholder="町域">
+
+<script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"></script>
+<script>
+  Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
+  document.getElementById('zip').addEventListener('input', async (e) => {
+    const zip = e.target.value.replace(/[^0-9]/g, '');
+    if (zip.length !== 7) return;
+
+    const [address] = await Jpostcode.find(zip);
+    if (!address) return;
+
+    document.getElementById('prefecture').value = address.prefecture;
+    document.getElementById('city').value = address.city;
+    document.getElementById('town').value = address.town;
+  });
+</script>
+```
+
+## インストール（npm）
 
 ```bash
 npm install jpostcode
 ```
 
-## 使い方
-
-基本的な使用例を以下に示します:
-
-### JavaScript
+### Node.js (CommonJS)
 
 ```javascript
 const { Jpostcode } = require('jpostcode');
 
-// 郵便番号から住所を検索
 const addresses = Jpostcode.find('0010000');
-
-if (addresses.length > 0) {
-  // 1つの郵便番号から複数の住所が見つかる場合があります
-  for (const address of addresses) {
-    console.log(`都道府県: ${address.prefecture} (${address.prefectureKana})`);
-    console.log(`市区町村: ${address.city} (${address.cityKana})`);
-    console.log(`町域: ${address.town} (${address.townKana})`);
-    console.log(`郵便番号: ${address.zipCode}`);
-  }
-} else {
-  console.log('住所が見つかりませんでした。');
+for (const address of addresses) {
+  console.log(`${address.prefecture} ${address.city} ${address.town}`);
+  console.log(`(カナ: ${address.prefectureKana} ${address.cityKana} ${address.townKana})`);
 }
 ```
 
-### TypeScript
+### Node.js (ESM) / TypeScript
 
 ```typescript
 import { Address, Jpostcode } from 'jpostcode';
 
-// 郵便番号から住所を検索
-const addresses:Address[] = Jpostcode.find('0010000');
-
-if (addresses.length > 0) {
-  // 1つの郵便番号から複数の住所が見つかる場合があります
-  for (const address of addresses) {
-    console.log(`都道府県: ${address.prefecture} (${address.prefectureKana})`);
-    console.log(`市区町村: ${address.city} (${address.cityKana})`);
-    console.log(`町域: ${address.town} (${address.townKana})`);
-    console.log(`郵便番号: ${address.zipCode}`);
-  }
-} else {
-  console.log('住所が見つかりませんでした。');
-}
-```
-
-### Node.js ESM
-
-```javascript
-import { Jpostcode } from 'jpostcode';
-
-const addresses = Jpostcode.find('0010000');
+const addresses: Address[] = Jpostcode.find('0010000');
 console.log(addresses[0]?.prefecture);
 ```
 
-### Webブラウザでの使用
+`Jpostcode.find()` は配列を返します（同じ郵便番号に複数住所が紐づく場合があるため）。郵便番号が存在しない場合は空配列を返します。
 
-Webアプリケーションでは、AJAX版またはBundle版のいずれかを使用できます:
+### ブラウザ・Bundle 版（全データ同梱・同期 API）
 
-#### AJAX版（ほとんどのケースで推奨）
-
-```html
-<!-- AJAX版を読み込み -->
-<script src="https://cdn.jsdelivr.net/npm/jpostcode@latest/dist/jpostcode-web.js"></script>
-
-<script>
-// データファイルのベースURLを設定（オプション、デフォルトは './data/json/'）
-Jpostcode.setBaseUrl('https://your-cdn.com/jpostcode-data/');
-
-// 住所を検索（Promiseを返します）
-Jpostcode.find('1000001').then(addresses => {
-  if (addresses.length > 0) {
-    for (const address of addresses) {
-      console.log(`都道府県: ${address.prefecture}`);
-      console.log(`市区町村: ${address.city}`);
-      console.log(`町域: ${address.town}`);
-    }
-  }
-});
-</script>
-```
-
-##### 公式 Cloudflare CDN 版
-
-ライブラリ本体と郵便番号データの両方を Cloudflare Pages から配信しています。npm を介さず、ホスティングも自前で用意せずに使えます:
+すべてのデータを JS に同梱するためファイルサイズは大きくなりますが、ネットワークを使わずに同期 API で呼び出せます。
 
 ```html
-<script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"></script>
-
-<script>
-// データも同じ CDN から取得するように設定
-Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
-
-Jpostcode.find('1000001').then(addresses => {
-  if (addresses.length > 0) {
-    console.log(`都道府県: ${addresses[0].prefecture}`);
-  }
-});
-</script>
-```
-
-- 上流の [jpostcode-data](https://github.com/kufu/jpostcode-data) の月次更新を反映して自動再配信
-- 東京を含む Cloudflare エッジから低レイテンシで配信
-- JSON データには `s-maxage=2592000` (エッジ30日) / `max-age=86400` (ブラウザ1日) のキャッシュヘッダ
-
-#### Bundle版（全データ同梱）
-
-```html
-<!-- Bundle版を読み込み（ファイルサイズは大きいですが、オフラインでも動作します） -->
 <script src="https://cdn.jsdelivr.net/npm/jpostcode@latest/dist/jpostcode-web-bundle.js"></script>
-
 <script>
-// 住所を検索（同期処理）
-const addresses = Jpostcode.find('1000001');
-if (addresses.length > 0) {
-  for (const address of addresses) {
-    console.log(`都道府県: ${address.prefecture}`);
-    console.log(`市区町村: ${address.city}`);
-    console.log(`町域: ${address.town}`);
-  }
-}
+  const addresses = Jpostcode.find('1000001'); // Promise ではなく同期
+  console.log(addresses[0]?.prefecture);
 </script>
 ```
 
-## 機能
+## データの鮮度について
 
-- **郵便番号による住所検索**: 郵便番号を使用して詳細な住所情報を取得
-- **存在しない郵便番号への対応**: 郵便番号が存在しない場合は空の配列を返却
-- **Webブラウザ対応**: WebアプリケーションのためのAJAX版とBundle版を提供
-- **TypeScript対応**: 完全なTypeScript型定義を含む
-- **常に最新の郵便番号データ**: 毎月、上流データソース ([jpostcode-data](https://github.com/kufu/jpostcode-data)) の更新を検知して自動的に新バージョンを npm に公開。バージョン番号は `MAJOR.MINOR.YYYYMM` 形式で、データの取得時期がひと目で分かります
+- 上流の [jpostcode-data](https://github.com/kufu/jpostcode-data) が月次で日本郵便の最新データを取り込みます
+- 本ライブラリは GitHub Actions で上流の更新を検知し、新バージョンを自動で npm / CDN に公開します
+- バージョン `MAJOR.MINOR.YYYYMM` の `YYYYMM` がデータ取得時期を表します（例: `1.0.202605` は 2026 年 5 月版）
+- npm を使う場合は依存を更新するだけ、CDN を使う場合は何もしなくても最新になります
 
-## ビルドとテスト
+## デモ
 
-プロジェクトをビルドするには:
+ライブデモ: <https://matzlika.github.io/jpostcode-js/>
+
+ローカルで動かす場合:
 
 ```bash
+npm install
 npm run build
+mkdir -p docs/dist && cp -r dist/* docs/dist/
+npx http-server docs -p 8000
 ```
 
-このコマンドで Node.js 用の CommonJS / ESM と、ブラウザ用の `dist/jpostcode-web.js` / `dist/jpostcode-web-bundle.js` を生成します。
-
-テストを実行するには:
+## 開発
 
 ```bash
+npm install
+npm run build  # CommonJS / ESM / ブラウザ版を生成
 npm test
 ```
 
 ## 貢献
 
-貢献を歓迎します！GitHubでissueを開くか、プルリクエストを送信してください。
+issue や Pull Request を歓迎します。
 
 ## 謝辞
 
-このプロジェクトは [jpostcode-data](https://github.com/kufu/jpostcode-data) ライブラリのデータを使用しています。このライブラリのメンテナと貢献者の皆様に感謝いたします。
-
-## GitHub Pagesデモ
-
-このプロジェクトには、ライブラリの機能を日本語で紹介するGitHub Pagesデモサイトが含まれています。
-
-### ライブデモ
-
-ライブデモは以下で公開されています: https://matzlika.github.io/jpostcode-js/
-
-### ローカル開発
-
-デモサイトをローカルで実行するには:
-
-```bash
-# まずプロジェクトをビルド
-npm run build
-
-# ビルド成果物を docs/dist/ に配置（index.html が参照する）
-mkdir -p docs/dist && cp -r dist/* docs/dist/
-
-# 静的ファイルサーバーでdocsディレクトリを配信
-# 例: Pythonを使用する場合
-python -m http.server 8000 --directory docs
-
-# または Node.js http-serverを使用する場合
-npx http-server docs -p 8000
-```
-
-その後、ブラウザで `http://localhost:8000` を開きます。
+このライブラリは [jpostcode-data](https://github.com/kufu/jpostcode-data) (Copyright 2023 SmartHR, Inc., MIT License) のデータを使用しています。メンテナと貢献者の皆様に感謝いたします。
 
 ## ライセンス
 
-このプロジェクトは MIT ライセンスの下で配布されています。詳細は [LICENSE](LICENSE) を参照してください。
-
-本プロジェクトは [jpostcode-data](https://github.com/kufu/jpostcode-data) (Copyright 2023 SmartHR, Inc., MIT License) のデータを同梱しています。サードパーティ著作権表示については [NOTICE](NOTICE) を参照してください。
+[MIT](LICENSE)。サードパーティ著作権表示は [NOTICE](NOTICE) を参照してください。
 
 ---
 
-**English version**: [README.en.md](README.en.md)
+**English**: [README.en.md](README.en.md)
