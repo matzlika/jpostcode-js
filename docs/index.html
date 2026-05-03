@@ -501,8 +501,10 @@ console.log(addresses[0]?.prefecture); <span class="comment">// 東京都</span>
         </div>
     </footer>
 
-    <script src="./dist/jpostcode-web.js"></script>
+    <script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"></script>
     <script>
+        Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
+
         // --- フォーム自動入力デモ ---
         const autofillZip   = document.getElementById('autofillZip');
         const autofillPref  = document.getElementById('autofillPref');
