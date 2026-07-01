@@ -1,6 +1,6 @@
 {
   "name": "jpostcode",
-  "version": "1.0.202605",
+  "version": "1.0.202607",
   "description": "Japanese postal code to address lookup. Auto-updated monthly, official CDN available, no API server required. Works in Node.js, browsers, and TypeScript.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.mjs",
