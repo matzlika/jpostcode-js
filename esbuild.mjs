@@ -50,3 +50,34 @@ await esbuild.build({
   console.log(e);
   process.exit(1);
 }).then(() => console.log("done esm build"));
+
+// jpostcode/web — バンドラー/ブラウザ向けの fetch ベース版
+await esbuild.build({
+  entryPoints: ["src/web.ts"],
+  outfile: "dist/web.mjs",
+  bundle: true,
+  platform: "neutral",
+  target: "es2018",
+  minify: true,
+  sourcemap: true,
+  format: "esm",
+  banner: { js: licenseBanner }
+}).catch((e) => {
+  console.log(e);
+  process.exit(1);
+}).then(() => console.log("done web esm build"));
+
+await esbuild.build({
+  entryPoints: ["src/web.ts"],
+  outfile: "dist/web.cjs",
+  bundle: true,
+  platform: "neutral",
+  target: "es2018",
+  minify: true,
+  sourcemap: true,
+  format: "cjs",
+  banner: { js: licenseBanner }
+}).catch((e) => {
+  console.log(e);
+  process.exit(1);
+}).then(() => console.log("done web cjs build"));

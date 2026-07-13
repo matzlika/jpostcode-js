@@ -36,5 +36,8 @@ describe('Jpostcode', () => {
   test('should generate browser builds', () => {
     expect(existsSync('dist/jpostcode-web.js')).toBe(true);
     expect(existsSync('dist/jpostcode-web-bundle.js')).toBe(true);
+    expect(existsSync('dist/web.mjs')).toBe(true);
+    expect(existsSync('dist/web.cjs')).toBe(true);
+    expect(existsSync('dist/web.d.ts')).toBe(true);
   });
 });

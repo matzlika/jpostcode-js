@@ -446,8 +446,6 @@
                 <h3>ブラウザで使う（CDN）</h3>
                 <pre><code>&lt;script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-  Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
-
   Jpostcode.find('1000001').then(addresses =&gt; {
     console.log(addresses[0]?.prefecture); <span class="comment">// 東京都</span>
   });
@@ -461,8 +459,6 @@
 
 &lt;script src="https://jpostcode-js.pages.dev/dist/jpostcode-web.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-  Jpostcode.setBaseUrl('https://jpostcode-js.pages.dev/data/json/');
-
   document.getElementById('zip').addEventListener('input', async (e) =&gt; {
     const zip = e.target.value.replace(/[^0-9]/g, '');
     if (zip.length !== 7) return;
@@ -483,6 +479,12 @@
                 <pre><code>import { Address, Jpostcode } from 'jpostcode';
 
 const addresses: Address[] = Jpostcode.find('1000001');
+console.log(addresses[0]?.prefecture); <span class="comment">// 東京都</span></code></pre>
+
+                <h3>バンドラー（Vite / webpack）/ React などのフロントエンド</h3>
+                <pre><code>import { Jpostcode } from 'jpostcode/web';
+
+const addresses = await Jpostcode.find('1000001'); <span class="comment">// データは CDN から取得</span>
 console.log(addresses[0]?.prefecture); <span class="comment">// 東京都</span></code></pre>
 
                 <p style="margin-top: 1rem; color: #cbd5e0; font-size: 0.9rem;">

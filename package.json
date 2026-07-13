@@ -12,8 +12,15 @@
       "import": "./dist/index.mjs",
       "default": "./dist/index.cjs.js"
     },
+    "./web": {
+      "types": "./dist/web.d.ts",
+      "require": "./dist/web.cjs",
+      "import": "./dist/web.mjs",
+      "default": "./dist/web.mjs"
+    },
     "./package.json": "./package.json"
   },
+  "sideEffects": false,
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -55,7 +62,8 @@
     "build:web": "node esbuild-web.mjs",
     "build:types": "tsc -p tsconfig.build.json",
     "test:esm": "node -e \"import('./dist/index.mjs').then((m)=>{const r=m.Jpostcode.find('0010000'); if (r[0]?.prefecture !== '北海道') process.exit(1)})\"",
-    "test": "npm run build && jest && npm run test:esm"
+    "test:web": "node scripts/test-web-dist.mjs",
+    "test": "npm run build && jest && npm run test:esm && npm run test:web"
   },
   "files": [
     "dist",
