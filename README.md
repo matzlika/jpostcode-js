@@ -41,10 +41,11 @@
 </script>
 ```
 
-ライブラリ本体・郵便番号データともに [Cloudflare Pages](https://jpostcode-js.pages.dev/) から配信しています。データはデフォルトで公式 CDN から取得します。自前で配信する場合は `Jpostcode.setBaseUrl('/data/json/')` のように取得元を変更できます。
+ライブラリ本体・郵便番号データともに [Cloudflare Pages](https://jpostcode-js.pages.dev/) から配信しています。データはデフォルトで公式 CDN から取得します。自前で配信する場合は `Jpostcode.setBaseUrl('/data/json/')` のように取得元を変更できます([データを自前で配信する](#データを自前で配信する))。
 
 - 上流データの月次更新を反映して自動再配信
 - 東京を含む Cloudflare エッジから低レイテンシで配信
+- gzip / brotli 圧縮配信のため、1 回の検索で取得されるのは上 3 桁ごとの 1 ファイル・転送数 KB〜数十 KB
 - JSON データには `s-maxage=2592000`(エッジ 30 日)/ `max-age=86400`(ブラウザ 1 日)のキャッシュヘッダ
 
 ## フォーム住所自動入力の例
@@ -137,7 +138,7 @@ function AddressForm() {
 }
 ```
 
-データを自前で配信する場合は `Jpostcode.setBaseUrl('/data/json/')` で取得元を変更できます(データ一式は npm パッケージの `dist/jpostcode-data/data/json/` に同梱)。
+データを自前で配信する場合は[データを自前で配信する](#データを自前で配信する)を参照してください。
 
 ### ブラウザ・Bundle 版(全データ同梱・同期 API)
 
@@ -153,6 +154,40 @@ function AddressForm() {
 
 Bundle 版はファイルサイズが jsDelivr の配信上限(50MB)を超えるため、unpkg から読み込んでください。通常のフォーム用途には fetch 版(CDN スクリプト版または `jpostcode/web`)を推奨します。
 
+## データを自前で配信する
+
+fetch 版はデフォルトで公式 CDN(`jpostcode-js.pages.dev`)からデータを取得します。このとき入力された郵便番号の上 3 桁が CDN へのリクエストとして送信されます。これを避けたい場合や、配信を自分の環境の管理下に置きたい場合は、データ一式を自前でホストできます。
+
+1. npm パッケージに同梱されているデータ(JSON 951 ファイル・約 56MB)を静的配信ディレクトリにコピーします
+
+   ```bash
+   cp -r node_modules/jpostcode/dist/jpostcode-data/data/json public/data/json
+   ```
+
+2. 取得元を差し替えます
+
+   ```javascript
+   Jpostcode.setBaseUrl('/data/json/');
+   ```
+
+- 実際に取得されるのは入力された郵便番号の上 3 桁に対応する 1 ファイル(数 KB〜数百 KB)だけです
+- JSON は圧縮がよく効くため(全体で 56MB → gzip 後約 3.8MB)、配信側で gzip / brotli 圧縮を有効にすれば 1 ファイルあたりの転送量は数 KB〜数十 KB になります。ほとんどの静的ホスティング・CDN はデフォルトで圧縮配信します
+- ライブラリと別のオリジンから配信する場合は、配信側に `Access-Control-Allow-Origin` ヘッダの設定が必要です(同一オリジンなら不要)
+- データの更新は毎月の npm パッケージ更新に含まれます。`npm update jpostcode` 後に再コピーしてください
+
+nginx で配信する場合の設定例です。nginx のデフォルトでは JSON は gzip 対象外のため、`gzip_types` の指定が必要です。
+
+```nginx
+location /data/json/ {
+    gzip on;
+    gzip_types application/json;
+    expires 1d;
+    add_header Cache-Control "public";
+    # 別オリジンのページから参照する場合のみ
+    # add_header Access-Control-Allow-Origin "https://example.com";
+}
+```
+
 ## API
 
 ### `Jpostcode.find(postalCode)`
@@ -160,6 +195,7 @@ Bundle 版はファイルサイズが jsDelivr の配信上限(50MB)を超える
 - 郵便番号は 7 桁の文字列で指定します。ハイフン付き(`'100-0001'`)も受け付けます
 - 返り値は `Address` の配列です。同じ郵便番号に複数の住所が紐づく場合があるためです(複数町域、事業所個別郵便番号など)。存在しない郵便番号の場合は空配列を返します
 - Node.js 版(`jpostcode`)は同期で `Address[]` を、Web 版(`jpostcode/web` / CDN スクリプト版)は `Promise<Address[]>` を返します
+- Web 版は、データの取得に失敗した場合(ネットワークエラー、HTTP 5xx など)は Promise が reject します。「該当する住所がない」(空配列)とは区別されます
 
 ### `Address` のプロパティ
 

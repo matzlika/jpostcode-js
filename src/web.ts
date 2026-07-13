@@ -15,19 +15,18 @@ class Jpostcode {
   static async find(postalCode: string): Promise<Address[]> {
     const { upper, lower } = splitPostalCode(postalCode);
 
-    try {
-      if (!this.dataCache[upper]) {
-        const response = await fetch(`${this.baseUrl}${upper}.json`);
-        if (!response.ok) {
-          return [];
-        }
+    if (!this.dataCache[upper]) {
+      const response = await fetch(`${this.baseUrl}${upper}.json`);
+      if (response.status === 404) {
+        // データファイルなし = 存在しない郵便番号帯。負の結果もキャッシュする
+        this.dataCache[upper] = {};
+      } else if (!response.ok) {
+        throw new Error(`jpostcode: failed to fetch postal code data (HTTP ${response.status})`);
+      } else {
         this.dataCache[upper] = await response.json();
       }
-      return toAddresses(this.dataCache[upper]?.[lower]);
-    } catch (error) {
-      console.error('Error fetching postal code data:', error);
-      return [];
     }
+    return toAddresses(this.dataCache[upper]?.[lower]);
   }
 }
 

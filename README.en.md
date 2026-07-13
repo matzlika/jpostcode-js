@@ -41,10 +41,11 @@ Copy and paste — it just works.
 </script>
 ```
 
-Both the library and postal code data are distributed via [Cloudflare Pages](https://jpostcode-js.pages.dev/). Data is fetched from the official CDN by default; call `Jpostcode.setBaseUrl('/data/json/')` to serve it yourself.
+Both the library and postal code data are distributed via [Cloudflare Pages](https://jpostcode-js.pages.dev/). Data is fetched from the official CDN by default; call `Jpostcode.setBaseUrl('/data/json/')` to serve it yourself (see [Self-hosting the data](#self-hosting-the-data)).
 
 - Re-deployed automatically whenever upstream data is updated
 - Served from Cloudflare's global edge (including Tokyo) for low latency
+- Served with gzip / brotli compression — each lookup fetches one file per upper-3-digit block, a few KB to a few tens of KB over the wire
 - JSON responses ship with `s-maxage=2592000` (30 days at the edge) / `max-age=86400` (1 day in browsers)
 
 ## Form address autofill example
@@ -137,7 +138,7 @@ function AddressForm() {
 }
 ```
 
-To serve the data yourself, change the source with `Jpostcode.setBaseUrl('/data/json/')` (the full dataset ships in the npm package under `dist/jpostcode-data/data/json/`).
+To serve the data yourself, see [Self-hosting the data](#self-hosting-the-data).
 
 ### Browser bundle (all data inlined, synchronous API)
 
@@ -153,6 +154,40 @@ This build inlines the entire dataset in a single file. The file is large (~55MB
 
 Load the bundle from unpkg — the file exceeds jsDelivr's 50MB size limit. For typical form use cases the fetch-based variants (CDN script or `jpostcode/web`) are recommended.
 
+## Self-hosting the data
+
+By default the fetch-based variants load data from the official CDN (`jpostcode-js.pages.dev`), which means the first 3 digits of the entered postal code are sent to the CDN as a request. To avoid this, or to keep distribution under your own control, you can host the dataset yourself.
+
+1. Copy the dataset bundled in the npm package (951 JSON files, about 56MB) into your static assets directory
+
+   ```bash
+   cp -r node_modules/jpostcode/dist/jpostcode-data/data/json public/data/json
+   ```
+
+2. Point the library at it
+
+   ```javascript
+   Jpostcode.setBaseUrl('/data/json/');
+   ```
+
+- Only one file (a few KB to a few hundred KB) is fetched per lookup, corresponding to the first 3 digits of the entered postal code
+- The JSON compresses well (56MB total → about 3.8MB gzipped), so with gzip / brotli enabled on the server each file transfers as a few KB to a few tens of KB. Most static hosts and CDNs compress by default
+- When serving from a different origin than the page, the server must send an `Access-Control-Allow-Origin` header (not needed for same-origin)
+- Data updates ship with the monthly npm package updates; re-copy after `npm update jpostcode`
+
+Example nginx configuration. Note that nginx does not gzip JSON by default, so `gzip_types` is required:
+
+```nginx
+location /data/json/ {
+    gzip on;
+    gzip_types application/json;
+    expires 1d;
+    add_header Cache-Control "public";
+    # Only when referenced from a page on a different origin
+    # add_header Access-Control-Allow-Origin "https://example.com";
+}
+```
+
 ## API
 
 ### `Jpostcode.find(postalCode)`
@@ -160,6 +195,7 @@ Load the bundle from unpkg — the file exceeds jsDelivr's 50MB size limit. For 
 - Pass a 7-digit postal code string; hyphenated input (`'100-0001'`) is also accepted
 - Returns an array of `Address` objects, since one postal code can map to multiple addresses (multiple towns, business postal codes, etc.). Returns an empty array if the postal code does not exist
 - The Node.js entry (`jpostcode`) returns `Address[]` synchronously; the web entries (`jpostcode/web` / CDN script) return `Promise<Address[]>`
+- In the web entries, the Promise rejects when fetching data fails (network errors, HTTP 5xx, etc.) — distinct from "no matching address" (an empty array)
 
 ### `Address` properties
 

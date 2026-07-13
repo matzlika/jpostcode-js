@@ -12,9 +12,9 @@ beforeEach(() => {
     const upper = url.match(/(\d{3})\.json$/)?.[1];
     const file = upper ? path.join(DATA_DIR, `${upper}.json`) : '';
     if (!file || !fs.existsSync(file)) {
-      return { ok: false, json: async () => ({}) };
+      return { ok: false, status: 404, json: async () => ({}) };
     }
-    return { ok: true, json: async () => JSON.parse(fs.readFileSync(file).toString()) };
+    return { ok: true, status: 200, json: async () => JSON.parse(fs.readFileSync(file).toString()) };
   });
   (globalThis as any).fetch = fetchMock;
 });
@@ -60,17 +60,26 @@ describe('Jpostcode (web)', () => {
     expect(await Jpostcode.find('1009999')).toEqual([]);
   });
 
-  test('should return an empty array when the data file is missing', async () => {
+  test('should return an empty array when the data file is missing (404)', async () => {
     expect(await Jpostcode.find('9999999')).toEqual([]);
   });
 
-  test('should return an empty array when fetch fails', async () => {
+  test('should cache the 404 result and not refetch the same upper digits', async () => {
+    await Jpostcode.find('9999999');
+    await Jpostcode.find('9990000');
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  test('should reject when fetch fails with a network error', async () => {
     (globalThis as any).fetch = jest.fn(async () => {
       throw new Error('network error');
     });
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    expect(await Jpostcode.find('1000001')).toEqual([]);
-    errorSpy.mockRestore();
+    await expect(Jpostcode.find('1000001')).rejects.toThrow('network error');
+  });
+
+  test('should reject on server errors', async () => {
+    (globalThis as any).fetch = jest.fn(async () => ({ ok: false, status: 500, json: async () => ({}) }));
+    await expect(Jpostcode.find('1000001')).rejects.toThrow('HTTP 500');
   });
 
   test('should serialize Address to a flat camelCase object', async () => {

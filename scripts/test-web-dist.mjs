@@ -10,9 +10,9 @@ globalThis.fetch = async (url) => {
   const upper = String(url).match(/(\d{3})\.json$/)?.[1];
   const file = upper ? path.join(DATA_DIR, `${upper}.json`) : '';
   if (!file || !fs.existsSync(file)) {
-    return { ok: false, json: async () => ({}) };
+    return { ok: false, status: 404, json: async () => ({}) };
   }
-  return { ok: true, json: async () => JSON.parse(fs.readFileSync(file).toString()) };
+  return { ok: true, status: 200, json: async () => JSON.parse(fs.readFileSync(file).toString()) };
 };
 
 const { Jpostcode, Address } = await import('../dist/web.mjs');
