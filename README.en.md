@@ -16,6 +16,9 @@ Versions follow the `MAJOR.MINOR.YYYYMM` format, where `YYYYMM` is the year and 
 - 🔄 **Auto-updated monthly** — A new version is automatically published to npm whenever the upstream [jpostcode-data](https://github.com/kufu/jpostcode-data) refreshes
 - 🌐 **Official CDN** — Library script and postal data are served from Cloudflare Pages
 - ⚡ **No API server required** — Runs entirely in the browser
+- 📖 **Kana readings** — Returns kana for prefecture, city, and town
+- 🏢 **Office postal codes** — Includes large-office (jigyosyo) postal codes with office name and street
+- 🔀 **Multiple addresses** — Returns every address as an array when a postal code maps to more than one
 - 🧩 **TypeScript ready** — Full type definitions included
 - 📦 **Node / bundlers / browsers** — Works in Node.js, and in Vite / webpack projects via `jpostcode/web`
 
@@ -222,10 +225,22 @@ Japan Post updates the postal code dataset every month, so data freshness is the
 | Library | Last release | Data delivery | Types |
 | --- | --- | --- | --- |
 | jpostcode | monthly (auto-published on upstream data updates) | bundled in package + official CDN | yes |
+| [jposta](https://www.npmjs.com/package/jposta) | 2026-06 | bundled (as of release) | yes |
 | [jp-zipcode-lookup](https://www.npmjs.com/package/jp-zipcode-lookup) | 2025-06 | bundled (as of release) | yes |
 | [japan-postal-code-oasis](https://www.npmjs.com/package/japan-postal-code-oasis) | 2023-12 | requires self-hosted data | no |
 | [japan-postal-code](https://www.npmjs.com/package/japan-postal-code) | 2023-07 | fetched from an external site | no |
-| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2019-05 | fetched from yubinbango.github.io (data updated separately) | no |
+| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2022-05 | fetched from yubinbango.github.io (data last updated 2026-05) | no |
+
+Returned fields also differ (based on each library's documented return values and type definitions).
+
+| Library | Kana | Office postal codes | Multiple addresses per code |
+| --- | --- | --- | --- |
+| jpostcode | prefecture / city / town | office name and street | all, as an array |
+| jposta | no | no | single result only |
+| jp-zipcode-lookup | prefecture / city only | no | all, as an array |
+| japan-postal-code-oasis | no | no | single result only |
+| japan-postal-code | no | no | single result only |
+| yubinbango-core2 | no | no | single result only |
 
 ## Data freshness
 

@@ -16,6 +16,9 @@
 - 🔄 **毎月自動更新** — 上流の [jpostcode-data](https://github.com/kufu/jpostcode-data) の更新を検知して新バージョンを npm に自動公開
 - 🌐 **公式 CDN あり** — Cloudflare Pages からライブラリ本体と郵便番号データを配信
 - ⚡ **API サーバー不要** — ブラウザだけで完結
+- 📖 **カナ表記付き** — 都道府県・市区町村・町域それぞれのカナを返す
+- 🏢 **事業所個別郵便番号対応** — 大口事業所の名称・番地を含むデータを収録
+- 🔀 **複数住所対応** — 同じ郵便番号に複数の住所が紐づく場合は全件を配列で返す
 - 🧩 **TypeScript 対応** — 完全な型定義付き
 - 📦 **Node / バンドラー / ブラウザ対応** — Node.js のほか、`jpostcode/web` で Vite / webpack などのバンドラーからも使える
 
@@ -222,10 +225,22 @@ location /data/json/ {
 | ライブラリ | 最終リリース | データの供給方法 | 型定義 |
 | --- | --- | --- | --- |
 | jpostcode | 毎月(データ更新に追随して自動公開) | パッケージ同梱+公式 CDN | あり |
+| [jposta](https://www.npmjs.com/package/jposta) | 2026-06 | パッケージ同梱(リリース時点のデータ) | あり |
 | [jp-zipcode-lookup](https://www.npmjs.com/package/jp-zipcode-lookup) | 2025-06 | パッケージ同梱(リリース時点のデータ) | あり |
 | [japan-postal-code-oasis](https://www.npmjs.com/package/japan-postal-code-oasis) | 2023-12 | データの自前ホスティングが必要 | なし |
 | [japan-postal-code](https://www.npmjs.com/package/japan-postal-code) | 2023-07 | 外部サイトから取得 | なし |
-| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2019-05 | yubinbango.github.io から取得(データは別リポジトリで更新) | なし |
+| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2022-05 | yubinbango.github.io から取得(データ最終更新 2026-05) | なし |
+
+取得できる項目にも差があります(各ライブラリの README・型定義に記載された返り値に基づく)。
+
+| ライブラリ | カナ | 事業所個別郵便番号 | 同一番号の複数住所 |
+| --- | --- | --- | --- |
+| jpostcode | 都道府県・市区町村・町域 | 名称・番地 | 全件を配列で返す |
+| jposta | なし | なし | 1 件のみ |
+| jp-zipcode-lookup | 都道府県・市区町村のみ | なし | 全件を配列で返す |
+| japan-postal-code-oasis | なし | なし | 1 件のみ |
+| japan-postal-code | なし | なし | 1 件のみ |
+| yubinbango-core2 | なし | なし | 1 件のみ |
 
 ## データの鮮度について
 
