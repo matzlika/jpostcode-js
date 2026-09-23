@@ -220,27 +220,21 @@ location /data/json/ {
 
 ## Comparison with other libraries
 
-Japan Post updates the postal code dataset every month, so data freshness is the practical differentiator (based on npm metadata as of July 2026).
+Comparison with other postal code lookup libraries on npm (based on npm metadata and each library's README and type definitions as of September 2026).
 
-| Library | Last release | Data delivery | Types |
-| --- | --- | --- | --- |
-| jpostcode | monthly (auto-published on upstream data updates) | bundled in package + official CDN | yes |
-| [jposta](https://www.npmjs.com/package/jposta) | 2026-06 | bundled (as of release) | yes |
-| [jp-zipcode-lookup](https://www.npmjs.com/package/jp-zipcode-lookup) | 2025-06 | bundled (as of release) | yes |
-| [japan-postal-code-oasis](https://www.npmjs.com/package/japan-postal-code-oasis) | 2023-12 | requires self-hosted data | no |
-| [japan-postal-code](https://www.npmjs.com/package/japan-postal-code) | 2023-07 | fetched from an external site | no |
-| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2022-05 | fetched from yubinbango.github.io (data last updated 2026-05) | no |
+| Library | Last release | Data delivery | Types | Kana | Office codes | Multiple addresses |
+| --- | --- | --- | --- | --- | --- | --- |
+| jpostcode | 2026-09 (monthly, automated) | bundled + CDN | yes | prefecture to town | yes | all |
+| [jposta](https://www.npmjs.com/package/jposta) | 2026-09 | bundled | yes | no | no | first only |
+| [jp-zipcode-lookup](https://www.npmjs.com/package/jp-zipcode-lookup) | 2025-06 | bundled | yes | prefecture / city | no | all |
+| [japan-postal-code-oasis](https://www.npmjs.com/package/japan-postal-code-oasis) | 2023-12 | self-hosted | no | no | no | first only |
+| [japan-postal-code](https://www.npmjs.com/package/japan-postal-code) | 2023-07 | external site | no | no | no | first only |
+| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2019-05 | external site | no | no | no | first only |
 
-Returned fields also differ (based on each library's documented return values and type definitions).
-
-| Library | Kana | Office postal codes | Multiple addresses per code |
-| --- | --- | --- | --- |
-| jpostcode | prefecture / city / town | office name and street | all, as an array |
-| jposta | no | no | single result only |
-| jp-zipcode-lookup | prefecture / city only | no | all, as an array |
-| japan-postal-code-oasis | no | no | single result only |
-| japan-postal-code | no | no | single result only |
-| yubinbango-core2 | no | no | single result only |
+- Last release: publish month of the latest version on npm. jpostcode is published automatically whenever the upstream dataset is updated each month
+- Data delivery: "bundled" ships the data as of the release inside the package, "self-hosted" requires you to serve the data yourself, "external site" fetches from a site run by the author. The yubinbango-core2 data on yubinbango.github.io was last updated in 2026-05
+- Office codes: whether office name and street are returned for large-office postal codes
+- Multiple addresses: whether all addresses sharing a postal code are returned as an array, or only one
 
 ## Data freshness
 

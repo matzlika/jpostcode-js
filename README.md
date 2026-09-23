@@ -220,27 +220,21 @@ location /data/json/ {
 
 ## 他のライブラリとの比較
 
-郵便番号データは毎月更新されるため、データの鮮度が実用上の差になります(2026 年 7 月時点の npm 公開情報に基づく)。
+npm で公開されている郵便番号検索ライブラリとの比較です(2026 年 9 月時点の npm 公開情報と、各ライブラリの README・型定義に基づく)。
 
-| ライブラリ | 最終リリース | データの供給方法 | 型定義 |
-| --- | --- | --- | --- |
-| jpostcode | 毎月(データ更新に追随して自動公開) | パッケージ同梱+公式 CDN | あり |
-| [jposta](https://www.npmjs.com/package/jposta) | 2026-06 | パッケージ同梱(リリース時点のデータ) | あり |
-| [jp-zipcode-lookup](https://www.npmjs.com/package/jp-zipcode-lookup) | 2025-06 | パッケージ同梱(リリース時点のデータ) | あり |
-| [japan-postal-code-oasis](https://www.npmjs.com/package/japan-postal-code-oasis) | 2023-12 | データの自前ホスティングが必要 | なし |
-| [japan-postal-code](https://www.npmjs.com/package/japan-postal-code) | 2023-07 | 外部サイトから取得 | なし |
-| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2022-05 | yubinbango.github.io から取得(データ最終更新 2026-05) | なし |
+| ライブラリ | 最終リリース | データの供給 | 型定義 | カナ | 事業所番号 | 複数住所 |
+| --- | --- | --- | --- | --- | --- | --- |
+| jpostcode | 2026-09(毎月自動) | 同梱 + CDN | あり | 都道府県〜町域 | あり | 全件 |
+| [jposta](https://www.npmjs.com/package/jposta) | 2026-09 | 同梱 | あり | なし | なし | 1 件 |
+| [jp-zipcode-lookup](https://www.npmjs.com/package/jp-zipcode-lookup) | 2025-06 | 同梱 | あり | 都道府県・市区町村 | なし | 全件 |
+| [japan-postal-code-oasis](https://www.npmjs.com/package/japan-postal-code-oasis) | 2023-12 | 自前ホスト | なし | なし | なし | 1 件 |
+| [japan-postal-code](https://www.npmjs.com/package/japan-postal-code) | 2023-07 | 外部サイト | なし | なし | なし | 1 件 |
+| [yubinbango-core2](https://www.npmjs.com/package/yubinbango-core2) | 2019-05 | 外部サイト | なし | なし | なし | 1 件 |
 
-取得できる項目にも差があります(各ライブラリの README・型定義に記載された返り値に基づく)。
-
-| ライブラリ | カナ | 事業所個別郵便番号 | 同一番号の複数住所 |
-| --- | --- | --- | --- |
-| jpostcode | 都道府県・市区町村・町域 | 名称・番地 | 全件を配列で返す |
-| jposta | なし | なし | 1 件のみ |
-| jp-zipcode-lookup | 都道府県・市区町村のみ | なし | 全件を配列で返す |
-| japan-postal-code-oasis | なし | なし | 1 件のみ |
-| japan-postal-code | なし | なし | 1 件のみ |
-| yubinbango-core2 | なし | なし | 1 件のみ |
+- 最終リリース: npm 上の最新バージョンの公開年月。jpostcode は上流データの月次更新に追随して自動公開されます
+- データの供給: 「同梱」はパッケージにリリース時点のデータを含むもの、「自前ホスト」はデータを自分で配信する必要があるもの、「外部サイト」は作者が用意したサイトから取得するもの。yubinbango-core2 のデータは yubinbango.github.io 側で 2026-05 に更新されています
+- 事業所番号: 大口事業所個別郵便番号の名称・番地を返すかどうか
+- 複数住所: 同じ郵便番号に複数の住所が紐づく場合に全件を配列で返すか、1 件だけ返すか
 
 ## データの鮮度について
 
